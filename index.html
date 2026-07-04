@@ -150,16 +150,32 @@
   .vlog b{color:var(--txt)}
   .note{font-size:11px;color:var(--dim);margin-top:14px;line-height:1.6}
   a{color:var(--accent)}
+  .searchbar{position:sticky;top:56px;z-index:49;background:rgba(10,11,13,.92);
+    backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);padding:10px 0}
+  .searchbar .box{position:relative}
+  .searchbar .mag{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:15px;pointer-events:none}
+  .searchbar input{width:100%;box-sizing:border-box;background:var(--card2);border:1px solid var(--line2);
+    border-radius:12px;color:var(--txt);font-size:14px;padding:11px 14px 11px 36px;outline:none;-webkit-appearance:none}
+  .searchbar input:focus{border-color:var(--accent)}
+  .searchbar input::placeholder{color:var(--dim)}
+  #noRes{display:none;text-align:center;color:var(--muted);font-size:13px;padding:30px 10px}
+  .faq .ico{background:rgba(90,208,196,.10)}
 </style>
 </head>
 <body>
 
 <div class="appbar"><div class="wrap">
   <div class="brand"><b>ZEEKR&nbsp;X</b><span>Guía PRO · Edición Sergio Cardona</span></div>
-  <div class="vchip">v1.7</div>
+  <div class="vchip">v1.8</div>
 </div></div>
 
+<div class="searchbar"><div class="wrap"><div class="box">
+  <span class="mag">🔎</span>
+  <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="Buscar en la guía… (ej. bajar Palmas, cargar 100%, aire)">
+</div></div></div>
+
 <div class="wrap">
+  <div id="noRes">Sin resultados. Prueba con otra palabra (ej. “batería”, “carga”, “regen”).</div>
 
   <!-- HERO -->
   <div class="hero">
@@ -1870,6 +1886,68 @@
     <div class="note">🟩 Funciones de la ficha y el manual oficial. 🟧 Algunas (Face ID, gestos) pueden variar según la versión de software de tu unidad — confírmalas en tu carro.</div>
   </section>
 
+  <!-- PREGUNTAS QUE TODOS HACEN -->
+  <section class="faq">
+    <div class="stitle"><span class="n">❓</span><h2>Preguntas que todos hacen</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Respuestas cortas y claras. Usa también el buscador de arriba. <span class="tag t-of">🟩 + 🟦</span></p>
+
+    <details class="screen" open>
+      <summary><div class="ico">🔋</div><div class="h"><div class="t">¿Es malo cargar al 100%?</div><div class="r">Batería NMC</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>A <b>diario, sí conviene evitarlo</b>: tu batería es NMC y vive mejor entre 20–80%. Carga al 100% <b>solo el día antes de un viaje</b>. Un 100% ocasional no la daña; el problema es hacerlo todos los días. <span class="tag t-of">🟩</span> <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🔌</div><div class="h"><div class="t">¿Es malo dejarlo conectado toda la noche?</div><div class="r">Enchufado</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>No. El carro <b>corta solo</b> al llegar al tope que pusiste (ej. 80%). Dejarlo enchufado es incluso bueno: permite carga programada y salida programada. <span class="tag t-ex">🟦</span> <span class="tag t-of">🟩</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">❄️</div><div class="h"><div class="t">¿Apago el aire antes de bajarme?</div><div class="r">Climatización</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>No hace falta: el clima <b>se apaga solo</b> cuando apagas el carro. Mejor invierte en <b>preacondicionar enchufado</b> antes de subirte. <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🎛️</div><div class="h"><div class="t">¿Debo usar AUTO en el aire?</div><div class="r">Sí</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Sí, casi siempre. En AUTO el carro reparte el aire y ajusta el ventilador solo para llegar a tu temperatura. Solo pásate a manual en casos puntuales (enfriar rápido en interna). <span class="tag t-of">🟩</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">⚡</div><div class="h"><div class="t">¿El modo Deporte consume mucho?</div><div class="r">Aceleración</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Consume más <b>solo si aceleras fuerte</b>. Tenerlo activo y manejar suave no dispara el gasto; pero para máxima autonomía usa <b>Atenuado/Estándar</b>. Lo que gasta es el pie, no el nombre del modo. <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🛑</div><div class="h"><div class="t">¿La regeneración desgasta menos los frenos?</div><div class="r">Sí, mucho</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p><b>Sí.</b> Al frenar con el motor (regen), casi no usas las pastillas. Por eso los frenos de un eléctrico duran <b>mucho más</b>. Bajando Las Palmas en regen Deporte casi no tocas el pedal. <span class="tag t-of">🟩</span> <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">⏱️</div><div class="h"><div class="t">¿Cuánto tarda en cargar?</div><div class="r">AC vs DC</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p><b>En casa (AC):</b> con Wallbox 22 kW ≈ 3 h; 11 kW ≈ 6 h. <b>En viaje (DC rápida):</b> de 10 a 80% en <b>33 min</b> a 150 kW. <span class="tag t-of">🟩</span> <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🌧️</div><div class="h"><div class="t">¿Puedo cargar bajo lluvia?</div><div class="r">Sí</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Sí, el sistema está diseñado para eso. Solo <b>no toques el puerto de carga</b> ni los contactos con las manos mojadas, y sécalo si se moja mucho antes de conducir. <span class="tag t-of">🟩</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🚗</div><div class="h"><div class="t">¿El AWD gasta más que el trasero?</div><div class="r">Tracción inteligente</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Menos de lo que crees: en ciudad va como <b>tracción trasera</b> (más eficiente) y solo pasa a 4×4 cuando exiges potencia o hay poco agarre. En uso normal, la diferencia es pequeña. <span class="tag t-of">🟩</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">📉</div><div class="h"><div class="t">¿Pierdo autonomía con el aire acondicionado?</div><div class="r">Algo</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Sí, un poco. El truco: <b>preacondiciona enchufado</b> y usa la <b>ventilación del asiento</b> antes de forzar el AC. Así casi no lo notas. <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🅿️</div><div class="h"><div class="t">¿Puedo dejarlo semanas sin usar?</div><div class="r">Guardado largo</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Sí. Déjalo en <b>~50%</b> (ni lleno ni vacío) y, si puedes, enchufado. Evita dejarlo al 100% o cerca de 0% por mucho tiempo. <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+    <div class="note">🟩 Basado en la ficha y el manual oficial. 🟦 Buenas prácticas de uso real de eléctricos. ¿Tienes otra pregunta? Dímela y la agrego.</div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="vlog">
@@ -1881,16 +1959,33 @@
       <span style="color:var(--dim)">v1.4</span> — Cap. 10 Espejos + Cap. 11 Volante + Cap. 12 Modos (terminología oficial).<br>
       <span style="color:var(--dim)">v1.5</span> — Cap. 13 Regeneración + Cap. 14 ADAS + Cap. 15 Parqueo.<br>
       <span style="color:var(--dim)">v1.6</span> — Cap. 16 Carga AC + Cap. 17 Carga DC + Cap. 18 Batería.<br>
-      <span style="color:var(--accent)">v1.7</span> — <b>Cap. 19 Autonomía</b> + <b>Cap. 20 OTA</b> + <b>Cap. 21 Funciones ocultas</b>. Guía instalable a pantalla completa (PWA) y publicada en línea.<br>
-      <span style="color:var(--dim)">Próxima v1.8</span> — Cap. 22 Trucos + Cap. 23 Errores comunes + Cap. 24 Mitos y verdades.
+      <span style="color:var(--dim)">v1.7</span> — Cap. 19 Autonomía + Cap. 20 OTA + Cap. 21 Funciones ocultas · PWA + publicación en línea.<br>
+      <span style="color:var(--accent)">v1.8</span> — <b>Buscador inteligente</b> (ignora tildes/ñ, orden y 1 error de tecleo) + <b>Preguntas que todos hacen</b>.<br>
+      <span style="color:var(--dim)">Próxima v1.9</span> — Cap. 22 Trucos + Cap. 23 Errores comunes + Cap. 24 Mitos y verdades.
     </div>
     <div class="note">
       <b>Fuentes:</b> 🟩 Ficha técnica oficial ZEEKR X MY2026 (Colombia) · Manual de usuario ZEEKR X · Ficha Wallbox ZEEKR. 🟦 Experiencia práctica en vehículos eléctricos. 🟧 Pendiente de confirmar contra tu unidad / OTA.<br><br>
       Las rutas de menú siguen ZEEKR OS y pueden variar con actualizaciones de software. Este documento es una guía de apoyo y <b>no reemplaza el manual oficial</b> para temas de seguridad y garantía.<br><br>
-      ZEEKR X · Guía PRO · Edición Sergio Cardona · v1.7 · Julio 2026
+      ZEEKR X · Guía PRO · Edición Sergio Cardona · v1.8 · Julio 2026
     </div>
   </footer>
 
 </div>
+<script>
+(function(){
+  function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ñ/g,'n').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();}
+  function lev(a,b){var m=a.length,n=b.length;if(!m)return n;if(!n)return m;var d=[],i,j;for(i=0;i<=m;i++){d[i]=[i];}for(j=0;j<=n;j++){d[0][j]=j;}for(i=1;i<=m;i++){for(j=1;j<=n;j++){d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));}}return d[m][n];}
+  function wmatch(qw,words,joined){if(joined.indexOf(qw)>=0)return true;if(qw.length>=4){for(var i=0;i<words.length;i++){var w=words[i];if(Math.abs(w.length-qw.length)<=1&&lev(w,qw)<=1)return true;}}return false;}
+  var screens=[].slice.call(document.querySelectorAll('details.screen'));
+  screens.forEach(function(s){var sec=s.closest('section');var h=sec?sec.querySelector('.stitle h2'):null;var txt=norm((h?h.textContent+' ':'')+s.textContent);s.__joined=txt;s.__words=txt.split(' ');s.__open0=s.hasAttribute('open');});
+  var sections=[].slice.call(document.querySelectorAll('section'));
+  var hero=document.querySelector('.hero');
+  var noRes=document.getElementById('noRes');
+  var input=document.getElementById('q');
+  function reset(){screens.forEach(function(s){s.style.display='';s.open=s.__open0;});sections.forEach(function(se){se.style.display='';});if(hero)hero.style.display='';if(noRes)noRes.style.display='none';}
+  function run(v){var nv=norm(v);var qs=nv.split(' ').filter(Boolean);if(qs.length===0||nv.length<2){reset();return;}if(hero)hero.style.display='none';var total=0;screens.forEach(function(s){var m=qs.every(function(q){return wmatch(q,s.__words,s.__joined);});s.style.display=m?'':'none';s.open=m;if(m)total++;});sections.forEach(function(se){var scr=se.querySelectorAll('details.screen');if(scr.length===0){se.style.display='none';return;}var vis=[].slice.call(scr).some(function(x){return x.style.display!=='none';});se.style.display=vis?'':'none';});if(noRes)noRes.style.display=total?'none':'block';}
+  if(input){input.addEventListener('input',function(e){run(e.target.value);});}
+})();
+</script>
 </body>
 </html>
