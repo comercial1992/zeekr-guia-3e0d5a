@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ZEEKR X · Guía PRO · Edición Sergio Cardona</title>
+<!-- PWA / pantalla completa -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ZEEKR X Guía">
+<meta name="theme-color" content="#0a0b0d">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<style>
+  :root{
+    --bg:#0a0b0d; --bg2:#101218; --card:#14161d; --card2:#1a1d26;
+    --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.14);
+    --txt:#f3f4f7; --muted:#9aa0ab; --dim:#6b7280;
+    --accent:#5ad0c4; --accent2:#3b9dff; --gold:#d9b979;
+    --green:#34c759; --blue:#3b9dff; --yellow:#ffcc33; --red:#ff5a5a;
+    --r:18px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 600px at 50% -10%, #16202b 0%, var(--bg) 55%) fixed, var(--bg);
+    color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5; letter-spacing:.1px; -webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:0 16px}
+
+  /* App bar */
+  .appbar{position:sticky;top:0;z-index:50;background:rgba(10,11,13,.82);
+    backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line)}
+  .appbar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+  .brand{display:flex;flex-direction:column;line-height:1.15}
+  .brand b{font-weight:700;letter-spacing:3px;font-size:16px}
+  .brand span{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+  .vchip{font-size:11px;font-weight:600;color:#0a0b0d;background:var(--accent);
+    padding:4px 10px;border-radius:999px;letter-spacing:.5px}
+
+  /* Hero */
+  .hero{padding:34px 0 10px;text-align:center}
+  .hero .kick{font-size:11px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;font-weight:600}
+  .hero h1{font-size:34px;font-weight:300;margin:8px 0 2px;letter-spacing:1px}
+  .hero h1 b{font-weight:700}
+  .hero .sub{color:var(--muted);font-size:13px;letter-spacing:.5px}
+  .hero .ed{margin-top:10px;font-size:12px;color:var(--gold);letter-spacing:1px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0 6px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 6px;text-align:center}
+  .stat b{display:block;font-size:19px;font-weight:700}
+  .stat span{display:block;font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:3px}
+
+  /* Sections */
+  section{margin-top:30px}
+  .stitle{display:flex;align-items:center;gap:9px;margin:0 0 12px;padding:0 2px}
+  .stitle .n{font-size:11px;color:var(--dim);font-weight:700;letter-spacing:1px}
+  .stitle h2{font-size:15px;font-weight:600;margin:0;letter-spacing:.5px}
+  .stitle .line{flex:1;height:1px;background:var(--line)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px}
+  .card.soft{background:linear-gradient(180deg,var(--card2),var(--card))}
+
+  /* Legend */
+  .lgrid{display:grid;gap:8px}
+  .lrow{display:flex;align-items:flex-start;gap:10px;font-size:12.5px}
+  .dot{width:12px;height:12px;border-radius:50%;margin-top:3px;flex:0 0 auto}
+  .lrow b{font-weight:700}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:.5px}
+  .t-of{background:rgba(52,199,89,.15);color:#7ee7a0;border:1px solid rgba(52,199,89,.3)}
+  .t-ex{background:rgba(59,157,255,.15);color:#8cc4ff;border:1px solid rgba(59,157,255,.3)}
+  .t-pc{background:rgba(255,204,51,.14);color:#ffdd7a;border:1px solid rgba(255,204,51,.32)}
+  .stars{color:var(--gold);letter-spacing:2px;font-size:13px}
+
+  /* Spec table */
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:9px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:500;width:52%}
+  td{font-weight:600;text-align:right}
+  .spec-h{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;
+    font-weight:700;padding:14px 4px 4px;border:0}
+
+  /* Sergio config */
+  .sergio{border:1px solid rgba(217,185,121,.35);
+    background:linear-gradient(180deg,rgba(217,185,121,.08),rgba(20,22,29,.6))}
+  .sergio .badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
+    color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+  .srow{display:grid;grid-template-columns:1fr auto;gap:6px;padding:9px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+  .srow:last-child{border-bottom:0}
+  .srow .k{color:var(--muted)}
+  .srow .v{font-weight:700;text-align:right}
+
+  /* Chapters index */
+  .chgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .ch{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:11px 12px;
+    display:flex;flex-direction:column;gap:2px;min-height:58px;justify-content:center}
+  .ch .cn{font-size:10px;color:var(--dim);font-weight:700}
+  .ch .ct{font-size:12px;font-weight:600;line-height:1.25}
+  .ch.on{border-color:rgba(90,208,196,.5);background:linear-gradient(180deg,rgba(90,208,196,.10),var(--card))}
+  .ch.on .cn{color:var(--accent)}
+  .ch .soon{font-size:9px;color:var(--dim);margin-top:2px}
+
+  /* Chapter detail — app screens (accordion) */
+  .screen{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+  .screen>summary{list-style:none;cursor:pointer;padding:15px 16px;display:flex;align-items:center;gap:12px}
+  .screen>summary::-webkit-details-marker{display:none}
+  .screen .ico{width:34px;height:34px;border-radius:10px;background:var(--card2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 auto}
+  .screen .h{flex:1}
+  .screen .h .t{font-size:14px;font-weight:600}
+  .screen .h .r{font-size:10.5px;color:var(--muted);margin-top:2px;letter-spacing:.3px}
+  .lvl{font-size:9px;font-weight:800;padding:3px 7px;border-radius:6px;letter-spacing:.4px;white-space:nowrap}
+  .lvl.g{background:rgba(52,199,89,.15);color:#7ee7a0;border:1px solid rgba(52,199,89,.35)}
+  .lvl.b{background:rgba(59,157,255,.15);color:#8cc4ff;border:1px solid rgba(59,157,255,.35)}
+  .lvl.y{background:rgba(255,204,51,.14);color:#ffdd7a;border:1px solid rgba(255,204,51,.32)}
+  .chev{color:var(--dim);font-size:12px;transition:.2s;flex:0 0 auto}
+  .screen[open] .chev{transform:rotate(90deg)}
+  .body{padding:0 16px 16px;border-top:1px solid var(--line);margin-top:2px}
+  .field{margin-top:13px}
+  .field .fl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:700;margin-bottom:3px}
+  .field p{margin:0;font-size:12.8px;color:#dfe2e8}
+  .route{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;
+    background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;color:#bfe9e2;display:inline-block}
+  .rec{background:rgba(90,208,196,.08);border:1px solid rgba(90,208,196,.25);border-radius:10px;padding:10px 12px;font-size:12.8px;font-weight:600}
+  .callouts{display:grid;gap:8px;margin-top:13px}
+  .co{border-radius:10px;padding:10px 12px;font-size:12.3px;border:1px solid var(--line)}
+  .co .cl{font-size:9.5px;text-transform:uppercase;letter-spacing:1px;font-weight:800;margin-bottom:2px}
+  .co.pro{background:rgba(59,157,255,.08);border-color:rgba(59,157,255,.25)} .co.pro .cl{color:#8cc4ff}
+  .co.err{background:rgba(255,90,90,.07);border-color:rgba(255,90,90,.25)} .co.err .cl{color:#ff9a9a}
+  .impact{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:13px}
+  .im{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 6px;text-align:center}
+  .im .il{font-size:8.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+  .im .iv{font-size:12px;font-weight:700;margin-top:3px}
+  .im .iv.pos{color:#7ee7a0}.im .iv.neg{color:#ff9a9a}.im .iv.neu{color:#cfd3da}
+
+  /* Scenario table */
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px}
+  .scroll table{min-width:520px}
+  .scroll th,.scroll td{white-space:nowrap;text-align:center;font-size:11.5px;padding:9px 10px}
+  .scroll th:first-child,.scroll td:first-child{text-align:left;position:sticky;left:0;background:var(--card)}
+  .scroll thead th{color:var(--accent);font-weight:700}
+
+  footer{margin-top:34px;padding:20px 0 8px;border-top:1px solid var(--line);color:var(--muted);font-size:11.5px}
+  .vlog{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:12px}
+  .vlog b{color:var(--txt)}
+  .note{font-size:11px;color:var(--dim);margin-top:14px;line-height:1.6}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="appbar"><div class="wrap">
+  <div class="brand"><b>ZEEKR&nbsp;X</b><span>Guía PRO · Edición Sergio Cardona</span></div>
+  <div class="vchip">v1.7</div>
+</div></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kick">Manual Experto · Colombia 2026</div>
+    <h1>X Flagship <b>AWD</b></h1>
+    <div class="sub">Doble motor · Tracción integral · MY2026</div>
+    <div class="ed">◈ Edición personalizada · Medellín / Alto de Las Palmas ◈</div>
+    <div class="stats">
+      <div class="stat"><b>422</b><span>hp</span></div>
+      <div class="stat"><b>3.8s</b><span>0–100</span></div>
+      <div class="stat"><b>420</b><span>km WLTP</span></div>
+      <div class="stat"><b>AWD</b><span>4×4</span></div>
+    </div>
+  </div>
+
+  <!-- CÓMO USAR -->
+  <section>
+    <div class="stitle"><span class="n">00</span><h2>Cómo usar esta guía</h2><span class="line"></span></div>
+    <div class="card">
+      <div class="lgrid">
+        <div class="lrow"><span class="dot" style="background:var(--green)"></span><div><b>🟢 IMPRESCINDIBLE</b> — hay que configurarlo sí o sí.</div></div>
+        <div class="lrow"><span class="dot" style="background:var(--blue)"></span><div><b>🔵 RECOMENDADO</b> — mejora mucho la experiencia.</div></div>
+        <div class="lrow"><span class="dot" style="background:var(--yellow)"></span><div><b>🟡 OPCIONAL</b> — a gusto de cada quien.</div></div>
+        <div class="lrow"><span class="dot" style="background:var(--red)"></span><div><b>🔴 NO RECOMENDADO</b> — solo casos puntuales.</div></div>
+      </div>
+      <div style="height:1px;background:var(--line);margin:14px 0"></div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px">Valoración</div>
+      <div class="stars">★★★★★ <span style="color:var(--muted);font-size:12px">Excelente &nbsp;·&nbsp; ★★★☆☆ Bueno &nbsp;·&nbsp; ★☆☆☆☆ No recomendado</span></div>
+      <div style="height:1px;background:var(--line);margin:14px 0"></div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:8px">De dónde sale cada dato:</div>
+      <div class="tags">
+        <span class="tag t-of">🟩 OFICIAL</span>
+        <span class="tag t-ex">🟦 EXPERIENCIA</span>
+        <span class="tag t-pc">🟧 POR CONFIRMAR</span>
+      </div>
+      <div class="note" style="margin-top:10px">🟩 Ficha técnica / manual ZEEKR. &nbsp;🟦 Uso real de autos eléctricos y lógica técnica. &nbsp;🟧 Depende de tu unidad u OTA — verifícalo en tu carro. Las <b>rutas de menú</b> siguen ZEEKR OS y pueden cambiar con actualizaciones.</div>
+    </div>
+  </section>
+
+  <!-- FICHA TÉCNICA -->
+  <section>
+    <div class="stitle"><span class="n">◈</span><h2>Ficha técnica oficial</h2><span class="line"></span></div>
+    <div class="card">
+      <div style="margin-bottom:6px"><span class="tag t-of">🟩 OFICIAL · Ficha ZEEKR X MY2026 Colombia</span></div>
+      <table>
+        <tr><td class="spec-h" colspan="2">Motor y rendimiento</td></tr>
+        <tr><th>Motorización</th><td>2 motores síncronos (uno por eje)</td></tr>
+        <tr><th>Potencia máxima</th><td>315 kW / 422 hp</td></tr>
+        <tr><th>Torque máximo</th><td>543 Nm</td></tr>
+        <tr><th>Tracción</th><td>Integral AWD</td></tr>
+        <tr><th>0–100 km/h</th><td>3.8 s</td></tr>
+        <tr><th>Modo off-road</th><td>Sí (exclusivo Flagship)</td></tr>
+
+        <tr><td class="spec-h" colspan="2">Batería y carga</td></tr>
+        <tr><th>Batería</th><td>NMC · 69 kWh</td></tr>
+        <tr><th>Autonomía WLTP</th><td>hasta 420 km</td></tr>
+        <tr><th>Voltaje de operación</th><td>400 V</td></tr>
+        <tr><th>Carga AC (máx)</th><td>22 kW</td></tr>
+        <tr><th>Carga DC (máx)</th><td>150 kW</td></tr>
+        <tr><th>10 → 80 % en DC</th><td>33 min</td></tr>
+
+        <tr><td class="spec-h" colspan="2">Dimensiones</td></tr>
+        <tr><th>Largo / Entre ejes</th><td>4432 / 2750 mm</td></tr>
+        <tr><th>Ancho (sin espejos) / Alto</th><td>1836 / 1566 mm</td></tr>
+        <tr><th>Despeje / Diámetro de giro</th><td>175 mm / 11.5 m</td></tr>
+        <tr><th>Baúl trasero / delantero</th><td>362 / 30 L</td></tr>
+        <tr><th>Peso en vacío</th><td>1960 kg</td></tr>
+        <tr><th>Capacidad de remolque</th><td>1600 kg</td></tr>
+
+        <tr><td class="spec-h" colspan="2">Seguridad y garantía</td></tr>
+        <tr><th>Seguridad activa</th><td>ABS+EBD+ESP · ZEEKR AD (12 asist.)</td></tr>
+        <tr><th>Airbags</th><td>7</td></tr>
+        <tr><th>Garantía vehículo</th><td>5 años / 120.000 km</td></tr>
+        <tr><th>Garantía batería HV</th><td>8 años / 160.000 km</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONFIGURACIÓN SERGIO -->
+  <section>
+    <div class="stitle"><span class="n">★</span><h2>Configuración Sergio</h2><span class="line"></span></div>
+    <div class="card sergio">
+      <div class="badge">◈ Optimizada para Medellín · Palmas · Viajes · Diario</div>
+      <p style="font-size:12.5px;color:var(--muted);margin:0 0 10px">Ajuste base “todoterreno” para tu día a día. Equilibra confort, autonomía y seguridad. Los capítulos siguientes explican el porqué de cada uno.</p>
+      <div class="srow"><span class="k">Aceleración</span><span class="v">Estándar</span></div>
+      <div class="srow"><span class="k">Dirección</span><span class="v">Confort</span></div>
+      <div class="srow"><span class="k">Regeneración (ciudad)</span><span class="v">Normal</span></div>
+      <div class="srow"><span class="k">Bajando Las Palmas</span><span class="v">Regen Deporte + Mantener</span></div>
+      <div class="srow"><span class="k">Clima (AC)</span><span class="v">Auto · 22–23 °C</span></div>
+      <div class="srow"><span class="k">Carga diaria (NMC)</span><span class="v">20 → 80 %</span></div>
+      <div class="srow"><span class="k">Carga antes de viaje</span><span class="v">100 % (ese día)</span></div>
+      <div class="srow"><span class="k">Preacondicionar</span><span class="v">Enchufado, desde la App</span></div>
+      <div class="srow"><span class="k">Follow-Me-Home (luces)</span><span class="v">30 s</span></div>
+      <div class="srow"><span class="k">ADAS en carretera</span><span class="v">ACC + Centrado (LCC)</span></div>
+      <div style="margin-top:10px"><span class="tag t-ex">🟦 EXPERIENCIA + 🟩 datos oficiales</span></div>
+    </div>
+  </section>
+
+  <!-- ÍNDICE -->
+  <section>
+    <div class="stitle"><span class="n">≡</span><h2>Los 30 capítulos</h2><span class="line"></span></div>
+    <div class="chgrid">
+      <div class="ch on"><span class="cn">01 · LISTO</span><span class="ct">Configuración inicial</span></div>
+      <div class="ch on"><span class="cn">02 · LISTO</span><span class="ct">Perfiles</span></div>
+      <div class="ch on"><span class="cn">03 · LISTO</span><span class="ct">Llaves</span></div>
+      <div class="ch on"><span class="cn">04 · LISTO</span><span class="ct">Acceso inteligente</span></div>
+      <div class="ch on"><span class="cn">05 · LISTO</span><span class="ct">Bloqueo automático</span></div>
+      <div class="ch on"><span class="cn">06 · LISTO</span><span class="ct">Iluminación</span></div>
+      <div class="ch on"><span class="cn">07 · LISTO</span><span class="ct">Pantallas</span></div>
+      <div class="ch on"><span class="cn">08 · LISTO</span><span class="ct">Aire acondicionado</span></div>
+      <div class="ch on"><span class="cn">09 · LISTO</span><span class="ct">Asientos</span></div>
+      <div class="ch on"><span class="cn">10 · LISTO</span><span class="ct">Espejos</span></div>
+      <div class="ch on"><span class="cn">11 · LISTO</span><span class="ct">Volante</span></div>
+      <div class="ch on"><span class="cn">12 · LISTO</span><span class="ct">Modos de conducción</span></div>
+      <div class="ch on"><span class="cn">13 · LISTO</span><span class="ct">Regeneración</span></div>
+      <div class="ch on"><span class="cn">14 · LISTO</span><span class="ct">ADAS</span></div>
+      <div class="ch on"><span class="cn">15 · LISTO</span><span class="ct">Asistente de parqueo</span></div>
+      <div class="ch on"><span class="cn">16 · LISTO</span><span class="ct">Carga AC</span></div>
+      <div class="ch on"><span class="cn">17 · LISTO</span><span class="ct">Carga DC</span></div>
+      <div class="ch on"><span class="cn">18 · LISTO</span><span class="ct">Batería</span></div>
+      <div class="ch on"><span class="cn">19 · NUEVO</span><span class="ct">Autonomía</span></div>
+      <div class="ch on"><span class="cn">20 · NUEVO</span><span class="ct">OTA</span></div>
+      <div class="ch on"><span class="cn">21 · NUEVO</span><span class="ct">Funciones ocultas</span></div>
+      <div class="ch"><span class="cn">22</span><span class="ct">Trucos</span></div>
+      <div class="ch"><span class="cn">23</span><span class="ct">Errores comunes</span></div>
+      <div class="ch"><span class="cn">24</span><span class="ct">Mitos y verdades</span></div>
+      <div class="ch"><span class="cn">25</span><span class="ct">Solución de problemas</span></div>
+      <div class="ch"><span class="cn">26</span><span class="ct">Mantenimiento</span></div>
+      <div class="ch"><span class="cn">27</span><span class="ct">Lavado</span></div>
+      <div class="ch"><span class="cn">28</span><span class="ct">Antes de viajar</span></div>
+      <div class="ch"><span class="cn">29</span><span class="ct">Después de viajar</span></div>
+      <div class="ch"><span class="cn">30</span><span class="ct">Qué hacer si…</span></div>
+    </div>
+    <div class="note">+ Secciones especiales (próximas entregas): <b>Colombia</b> (Medellín, Las Palmas, Santa Fe, Bogotá, clima), <b>“Lo que el concesionario nunca te explicó”</b> y <b>“Preguntas que todos hacen”</b>.</div>
+  </section>
+
+  <!-- CAPÍTULO 1 -->
+  <section>
+    <div class="stitle"><span class="n">01</span><h2>Configuración inicial</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Toca cada tarjeta para abrirla. Todo se consulta en menos de 15 segundos.</p>
+
+    <!-- 1.1 Perfil / cuenta -->
+    <details class="screen" open>
+      <summary>
+        <div class="ico">👤</div>
+        <div class="h"><div class="t">Perfil y cuenta ZEEKR ID</div><div class="r">Barra de estado ▸ Cuenta de usuario</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Ruta</div><span class="route">Icono de la barra de estado ▸ Cuenta de usuario ▸ Iniciar sesión (ZEEKR ID)</span> <span class="tag t-of" style="margin-left:6px">🟩</span></div>
+        <div class="field"><div class="fl">Qué hace</div><p>Guarda en tu cuenta tus ajustes: asiento, espejos, clima, pantalla, preferencias de conducción. Al volver a entrar, el carro se reconfigura solo a tu gusto.</p></div>
+        <div class="field"><div class="fl">Cómo funciona</div><p>Inicias sesión con tu ZEEKR ID. Puedes activar <b>Face ID</b> (reconocimiento facial) y “cambiar de cuenta sin contraseña” para alternar perfiles rápido. El cambio de cuenta solo funciona con el carro detenido. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Por qué usarla</div><p>Es la base de todo. Sin perfil, cada ajuste se pierde y otro conductor te desconfigura el carro.</p></div>
+        <div class="field"><div class="fl">Cuándo cambiarla</div><p>Crea un perfil por conductor de la familia. Revisa que la App ZEEKR quede vinculada al mismo ID.</p></div>
+        <div class="rec" style="margin-top:13px">✔ Mi recomendación: 1 perfil “Sergio” con Face ID activo + App ZEEKR vinculada. ★★★★★</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Consejo PRO</div>Vincula la App primero: así activas preacondicionar y ver la carga desde el celular sin tocar el carro.</div>
+          <div class="co err"><div class="cl">Error común</div>Configurar todo “de invitado” sin loguear → se borra al apagar y hay que empezar de cero.</div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲ Mejora</div></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 1.2 Llave y acceso -->
+    <details class="screen">
+      <summary>
+        <div class="ico">🔑</div>
+        <div class="h"><div class="t">Llave y acceso</div><div class="r">Tarjeta NFC · Llave digital (App) · Bluetooth</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>El ZEEKR X usa <b>tarjeta NFC</b> y <b>llave digital</b> en el celular (Bluetooth). Acercas la tarjeta al pilar o llevas el teléfono y el carro se desbloquea. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Cómo funciona</div><p>La tarjeta NFC se apoya en la zona marcada del pilar B / manija. La llave digital vive en la App ZEEKR y puedes <b>compartir vehículo</b> con otra persona por tiempo limitado. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Por qué / Cuándo</div><p>Ten siempre la tarjeta física como respaldo (batería del celular muerta = llave digital muerta).</p></div>
+        <div class="rec">✔ Recomendación: llave digital en el celular para el día a día + tarjeta NFC guardada en la billetera como respaldo. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Error común</div>Dejar la tarjeta NFC sobre el cargador inalámbrico del carro: puede dañarse o desmagnetizarse. <span class="tag t-of">🟩</span></div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲ Mejora</div></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 1.3 Iluminación exterior -->
+    <details class="screen">
+      <summary>
+        <div class="ico">💡</div>
+        <div class="h"><div class="t">Iluminación exterior</div><div class="r">Faros Full LED · Luces de acompañamiento</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Faros <b>Full LED con animación</b> de encendido. La luz <b>Follow-Me-Home</b> deja las luces prendidas al salir con poca luz, para llegar iluminado. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Config recomendada</div><p>Faros en <b>AUTO</b> (prenden solos en túnel/noche). Follow-Me-Home a <b>30 s</b> (opciones: 30/60/90). El detalle fino está en el <b>Cap. 6</b>.</p></div>
+        <div class="rec">✔ Sergio: AUTO + Follow-Me-Home 30 s. En Medellín (túneles, lluvia) AUTO evita ir sin luces sin darte cuenta. ★★★★★</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Consejo PRO</div>Deja los faros en AUTO fijo: el ZEEKR sensa la luz y evita multas por circular sin luces en lluvia/túnel.</div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Mínimo</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Mínimo</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲▲ Alta</div></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 1.4 Climatización inicial -->
+    <details class="screen">
+      <summary>
+        <div class="ico">❄️</div>
+        <div class="h"><div class="t">Climatización (ajuste inicial)</div><div class="r">AC digital 2 zonas · AUTO</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Aire acondicionado <b>digital de dos zonas</b>. En modo AUTO, el carro decide ventilador y reparto para llegar a la temperatura que pongas. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Config recomendada</div><p><b>AUTO · 22–23 °C.</b> El detalle grande (preacondicionar, protección de calor, cómo ahorra batería) va en el <b>Cap. 8</b>.</p></div>
+        <div class="rec">✔ Sergio: AUTO 22–23 °C. Preacondiciona desde la App con el carro <b>enchufado</b> → cabina fría sin gastar autonomía. ★★★★★ <span class="tag t-ex">🟦</span></div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Error común</div>Dejar activada la “protección contra sobrecalentamiento” siempre. Solo úsala si estacionas muchas horas al sol; si no, gasta energía sin necesidad. <span class="tag t-ex">🟦</span></div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neg">▼ Media</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Confort</div><div class="iv pos">▲▲ Alto</div></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 1.5 Espejos -->
+    <details class="screen">
+      <summary>
+        <div class="ico">🪞</div>
+        <div class="h"><div class="t">Espejos</div><div class="r">Ajuste eléctrico · Plegado automático</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Espejos eléctricos sin marco. Se pueden plegar/desplegar solos al bloquear el carro, y se guardan en tu <b>perfil</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Config recomendada</div><p>Activa <b>plegado automático al cerrar</b>. Ajusta bien los espejos con tu perfil logueado para que se guarden.</p></div>
+        <div class="rec">✔ Sergio: plegado auto ON. En parqueaderos estrechos de Medellín protege los espejos. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Consejo PRO</div>Ajusta espejos con el asiento ya en tu posición y logueado: quedan atados a “Sergio” y vuelven solos.</div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲ Mejora</div></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 1.6 Asientos -->
+    <details class="screen">
+      <summary>
+        <div class="ico">💺</div>
+        <div class="h"><div class="t">Asientos (memoria)</div><div class="r">Eléctrico · Memoria · Ventilación</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Silla del conductor <b>eléctrica con memoria y ventilación</b>; lumbar eléctrico de 4 direcciones (Flagship). La posición se guarda en tu perfil. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Config recomendada</div><p>Ajusta posición + lumbar, guárdala en <b>Memoria 1 (Sergio)</b>. Ventilación es clima de Medellín: úsala en vez de bajar mucho el AC → gastas menos. <span class="tag t-ex">🟦</span></p></div>
+        <div class="rec">✔ Sergio: Memoria 1 guardada + ventilación de asiento como primer recurso contra el calor. ★★★★★</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Consejo PRO</div>Ventilar el asiento gasta muchísimo menos que enfriar toda la cabina: más autonomía y confort inmediato. <span class="tag t-ex">🟦</span></div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv pos">▲ Ahorra*</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Confort</div><div class="iv pos">▲▲ Alto</div></div>
+        </div>
+        <div class="note">*Usar ventilación de asiento en lugar de forzar el AC ahorra energía.</div>
+      </div>
+    </details>
+
+    <!-- Tabla escenario -->
+    <div style="margin-top:18px" class="stitle"><span class="n">▤</span><h2>Ajuste base según escenario</h2><span class="line"></span></div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Ajuste</th><th>Medellín ciudad</th><th>Subiendo Palmas</th><th>Bajando Palmas</th><th>Carretera</th><th>Lluvia</th></tr></thead>
+        <tbody>
+          <tr><td>Aceleración</td><td>Estándar</td><td>Deporte/Est.</td><td>Estándar</td><td>Estándar</td><td>Atenuado</td></tr>
+          <tr><td>Regeneración</td><td>Normal</td><td>Normal</td><td>Deporte</td><td>Normal</td><td>Normal</td></tr>
+          <tr><td>Dirección</td><td>Confort</td><td>Deporte</td><td>Confort</td><td>Confort</td><td>Confort</td></tr>
+          <tr><td>Clima</td><td>AUTO 22°</td><td>AUTO 22°</td><td>AUTO 22°</td><td>AUTO 22°</td><td>AUTO + desemp.</td></tr>
+          <tr><td>ADAS</td><td>—</td><td>—</td><td>—</td><td>ACC+LCC</td><td>ACC suave</td></tr>
+          <tr><td>Luces</td><td>AUTO</td><td>AUTO</td><td>AUTO</td><td>AUTO</td><td>AUTO ON</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">🟦 Guía práctica. El “porqué” de regeneración, modos y ADAS se desarrolla en los capítulos 12, 13 y 14.</div>
+  </section>
+
+  <!-- CAPÍTULO 2 · PERFILES -->
+  <section>
+    <div class="stitle"><span class="n">02</span><h2>Perfiles</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Un “perfil” = una <b>preferencia</b> atada a tu ZEEKR ID. El carro se ajusta solo a ti. <span class="tag t-of">🟩 Manual</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🧩</div>
+        <div class="h"><div class="t">Qué guarda un perfil</div><div class="r">3 preferencias por cuenta ZEEKR ID</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué guarda</div><p>Posición del <b>asiento del conductor</b>, <b>espejos exteriores</b> y <b>HUD</b> (head-up display). Puedes tener hasta <b>3 preferencias por cuenta</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Qué NO guarda</div><p>Clima, modo de conducción o volante <b>no</b> entran en la memoria de posición. Esos se guardan aparte por cuenta. <span class="tag t-ex">🟦</span></p></div>
+        <div class="field"><div class="fl">Antes de guardar</div><p>Carro <b>detenido en Park (P)</b> · sesión iniciada en la pantalla · asiento, espejos y HUD ya en tu posición. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: “Preferencia 1 = Sergio”. Ajusta todo, luego <b>Guardar</b>. El carro pita al confirmar. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Error común</div>Intentar <b>Restaurar</b> sin estar en P: la tecla no responde fuera de Park. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🔀</div>
+        <div class="h"><div class="t">4 formas de guardar / cambiar de perfil</div><div class="r">Rutas exactas</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">1 · Desde tu cuenta</div><span class="route">Barra de estado ▸ Cuenta de usuario ▸ tarjeta de Preferencias ▸ Guardar / Restaurar</span> <span class="tag t-of">🟩</span></div>
+        <div class="field"><div class="fl">2 · Desde el asiento</div><span class="route">Ajuste del asiento ▸ Conductor ▸ Guardar / Guardar como otra</span> <span class="tag t-of">🟩</span></div>
+        <div class="field"><div class="fl">3 · Ventana emergente</div><p>Al mover espejo/HUD aparece un cuadro para Guardar/Restaurar la preferencia. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">4 · Cambio rápido</div><span class="route">Barra de estado ▸ (icono de cuenta) ▸ tocar el nombre de la preferencia</span> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Para el día a día, la forma 4 es la más rápida: un toque y el carro se acomoda a ti. ★★★★★</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Consejo PRO</div>“Guardar como otra preferencia” <b>reemplaza</b> la que elijas. Nómbralas (Sergio / Esposa / Hijo) para no pisarte una.</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">👥</div>
+        <div class="h"><div class="t">Perfil compartido / varios conductores</div><div class="r">Cambio de cuenta sin contraseña</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Puedes editar el <b>nombre</b> de una preferencia y volverla <b>compartida</b>, o activar “cambiar cuenta sin contraseña” para alternar perfiles con un toque. El cambio de cuenta solo funciona con el carro <b>detenido</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Familia Cardona: una cuenta por conductor + Face ID. Cada quien entra y el carro se reconfigura solo. ★★★★☆</div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Confort</div><div class="iv pos">▲▲ Alto</div></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 3 · LLAVES -->
+  <section>
+    <div class="stitle"><span class="n">03</span><h2>Llaves</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">El ZEEKR X tiene <b>4 formas de abrir</b>: llave UWB, tiradores por aproximación, tarjeta NFC y celular. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🎛️</div>
+        <div class="h"><div class="t">Llave UWB (control físico)</div><div class="r">Bloquea, desbloquea y arma el antirrobo</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Botón <b>desbloquear</b> (abre puertas + portón y desarma antirrobo) y <b>bloquear</b> (cierra todo y arma antirrobo). Es la llave principal. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Cómo funciona</div><p>UWB = ubicación ultra-precisa (como un GPS de cercanía). El carro sabe si estás al lado. Puede fallar cerca de <b>torres de radio/TV o subestaciones eléctricas</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Es tu llave de respaldo obligatoria. Llévala siempre, aunque uses el celular. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Error común</div>Confiar solo en el celular. Si se descarga, la <b>UWB</b> es tu única forma segura de bloquear el carro. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🚪</div>
+        <div class="h"><div class="t">Entrada sin llave (tiradores ocultos)</div><div class="r">Puertas y Ventanillas ▸ Puertas</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Cómo funciona</div><p>Con la UWB encima, tocas el sensor del tirador → el tirador (que va <b>al ras de la puerta</b>) se retrae; metes 4 dedos y la puerta se abre. Al desbloquear: intermitentes parpadean 2 veces y se despliegan los espejos. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta (aproximación)</div><span class="route">Puertas y Ventanillas ▸ Puertas ▸ Desbloqueo por aproximación / bloqueo al alejarse</span> <span class="tag t-of">🟩</span></div>
+        <div class="field"><div class="fl">Extra</div><p><b>Desbloqueo en 2 pasos</b>: primer toque abre solo la puerta del conductor; segundo, todas. Buena idea por seguridad. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: aproximación <b>ON</b> + 2 pasos <b>ON</b>. Cómodo y seguro en la ciudad. ★★★★☆ <span class="tag t-pc">🟧 confirmar en tu unidad</span></div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Error común</div>Con frío/lluvia, hielo o mugre en el sensor del tirador puede impedir que abra. Límpialo. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">💳</div>
+        <div class="h"><div class="t">Tarjeta NFC</div><div class="r">Apoyar en el pilar B (lado conductor)</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Cómo funciona</div><p>Con el carro cerrado, apoyas la tarjeta en el <b>área de detección</b> (pilar B, lado conductor) para abrir; igual para cerrar. Ideal como respaldo en la billetera. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Cuidados (importante)</div><p>No la dobles ni cortes · <b>no la dejes en el cargador inalámbrico</b> · no la metas en la carcasa del celular · no la pegues con otras tarjetas (banco, transporte). Llaves extra o pérdida → <b>Centro de Servicio ZEEKR</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: tarjeta NFC guardada en la billetera como respaldo, lejos del cargador inalámbrico. ★★★★☆</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">📱</div>
+        <div class="h"><div class="t">Llave digital (App ZEEKR) y compartir</div><div class="r">Bluetooth · Compartir vehículo</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Con la App vinculada (Bluetooth) abres/cierras y hasta abres el portón a distancia. También ves el estado de las puertas. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Compartir vehículo</div><span class="route">App ZEEKR ▸ Mi vehículo ▸ (deslizar) Vehículo y OTA ▸ Compartir vehículo ▸ Crear uso compartido ▸ correo ▸ Confirmar para compartir</span> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Útil para prestar el carro por tiempo limitado (familia, taller). ★★★★☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Ojo</div>No puedes cancelar el uso compartido <b>mientras la otra persona lo está usando</b>. Compártelo solo con gente de confianza. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Tabla comparativa de llaves -->
+    <div style="margin-top:18px" class="stitle"><span class="n">▤</span><h2>Comparativa de llaves</h2><span class="line"></span></div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Llave</th><th>Abrir</th><th>Cerrar+antirrobo</th><th>Remoto</th><th>Respaldo</th></tr></thead>
+        <tbody>
+          <tr><td>UWB (física)</td><td>Sí</td><td>Sí</td><td>No</td><td>★★★★★</td></tr>
+          <tr><td>Aproximación</td><td>Sí</td><td>Sí</td><td>No</td><td>★★★★☆</td></tr>
+          <tr><td>Tarjeta NFC</td><td>Sí</td><td>Sí</td><td>No</td><td>★★★★☆</td></tr>
+          <tr><td>App / celular</td><td>Sí</td><td>Sí</td><td>Sí</td><td>★★★☆☆</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">🟦 Regla de oro: <b>UWB + tarjeta NFC siempre encima</b>; el celular es la comodidad, no el respaldo.</div>
+  </section>
+
+  <!-- SECCIÓN COLOMBIA -->
+  <section>
+    <div class="stitle"><span class="n">🇨🇴</span><h2>Sección Colombia</h2><span class="line"></span></div>
+    <div class="card soft" style="border-color:rgba(90,208,196,.25)">
+      <p style="font-size:12.5px;color:#dfe2e8;margin:0">Ajustes reales para tu geografía: Medellín, el <b>Alto de Las Palmas</b>, Santa Fe, Bogotá y el clima. Aquí es donde un eléctrico brilla… si lo manejas bien. <span class="tag t-ex">🟦 Experiencia + 🟩 datos</span></p>
+      <div class="note" style="margin-top:8px">Alturas aproximadas (referencia geográfica): Medellín ≈ 1.495 m · Alto de Las Palmas ≈ 2.500 m · Santa Fe ≈ 550 m · Bogotá ≈ 2.640 m. <span class="tag t-ex">🟦</span></div>
+    </div>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🏙️</div>
+        <div class="h"><div class="t">Medellín · ciudad y tráfico</div><div class="r">Comfort · Regen Media</div></div>
+        <span class="lvl g">🟢</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">El reto</div><p>Trancones y calor moderado. Un eléctrico <b>ama</b> el tráfico: en cada frenada recupera energía y no gasta detenido. <span class="tag t-ex">🟦</span></p></div>
+        <div class="field"><div class="fl">Ajuste</div><p>Modo <b>Comfort</b>, dirección Comfort, regen <b>Media</b>. Clima AUTO 22–23°. Ventilación de asiento antes que bajar mucho el AC.</p></div>
+        <div class="rec">✔ Preacondiciona desde la App con el carro <b>enchufado</b> antes de salir: cabina fría sin gastar autonomía. ★★★★★</div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv pos">▲ Buena</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Confort</div><div class="iv pos">▲▲ Alto</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">⛰️</div>
+        <div class="h"><div class="t">Subiendo el Alto de Las Palmas</div><div class="r">≈ +1.000 m de ascenso</div></div>
+        <span class="lvl b">🔵</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">El reto</div><p>Subir gasta harto: estás “levantando” 2 toneladas 1.000 metros. Verás caer el % rápido — <b>es normal</b>, no es falla. <span class="tag t-ex">🟦</span></p></div>
+        <div class="field"><div class="fl">Ajuste</div><p><b>Comfort</b> para máxima eficiencia; <b>Sport</b> solo si quieres respuesta inmediata al adelantar. Regen Media. El AWD sube sobrado con 543 Nm. <span class="tag t-of">🟩 potencia</span></p></div>
+        <div class="rec">✔ No persigas velocidad: subir a ritmo constante ahorra mucha batería. Lo recuperas al bajar. ★★★★☆</div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neg">▼▼ Alta baja</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Desempeño</div><div class="iv pos">▲▲ Sobra</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🔋</div>
+        <div class="h"><div class="t">Bajando el Alto de Las Palmas</div><div class="r">Regen Alta / ePedal — el truco</div></div>
+        <span class="lvl g">🟢</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">La joya del eléctrico</div><p>Al bajar, la <b>regeneración</b> convierte la bajada en carga: el motor frena y <b>devuelve energía a la batería</b>. Recuperas buena parte de lo que gastaste subiendo. <span class="tag t-ex">🟦 + 🟩 (regen 2 niveles + ePedal)</span></p></div>
+        <div class="field"><div class="fl">Ajuste</div><p>Regen <b>Alta</b> o <b>ePedal</b> (un solo pedal). Frenas con el motor, casi no tocas el freno. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Bajar en regen Alta protege los frenos (evita que se recalienten) y suma kilómetros gratis. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Error común</div>Bajar en punto muerto “por ahorrar”: en un eléctrico <b>no aplica</b> y pierdes toda la regeneración. Deja que el motor frene. <span class="tag t-ex">🟦</span></div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv pos">▲▲ Recupera</div></div>
+          <div class="im"><div class="il">Frenos</div><div class="iv pos">▲▲ Protege</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲ Mejora</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🌵</div>
+        <div class="h"><div class="t">Santa Fe de Antioquia · calor</div><div class="r">Bajada larga + ≈ 33 °C</div></div>
+        <span class="lvl b">🔵</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">El reto</div><p>Bajas al calor (Túnel de Occidente). El descenso te regala regen; el calor pide AC. Al regresar, <b>subir con calor</b> es lo que más gasta. <span class="tag t-ex">🟦</span></p></div>
+        <div class="field"><div class="fl">Ajuste</div><p>Bajando: regen Alta. Allá: parquea a la sombra, AC AUTO. De regreso: sal con buena carga y ritmo constante.</p></div>
+        <div class="rec">✔ Llega con ≥ 60–70 % si piensas devolverte el mismo día; el ascenso de vuelta consume fuerte. ★★★★☆ <span class="tag t-pc">🟧 estimación</span></div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neg">▼ Ida barata / vuelta cara</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Vigila calor</div></div>
+          <div class="im"><div class="il">Confort</div><div class="iv pos">▲ Bueno</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🛣️</div>
+        <div class="h"><div class="t">Viaje a Bogotá</div><div class="r">Carretera larga y de montaña</div></div>
+        <span class="lvl b">🔵</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">El reto</div><p>Trayecto largo y montañoso. La autonomía WLTP (420 km) es de laboratorio: en montaña con AC cuenta con <b>menos</b> en la práctica. Planea <b>paradas de carga DC</b>. <span class="tag t-pc">🟧 estimación real</span> · <span class="tag t-of">🟩 420 km WLTP</span></p></div>
+        <div class="field"><div class="fl">Ajuste</div><p>Comfort, <b>ACC + centrado de carril (LCC)</b> para descansar. Regen Baja–Media en autopista (no “frenes” en plano). Revisa el Cap. 28 “Antes de viajar”.</p></div>
+        <div class="rec">✔ Planea la ruta por % de batería, no por “creo que llego”. Carga DC (150 kW) 10→80% en ≈ 33 min. ★★★★☆ <span class="tag t-of">🟩</span></div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neg">▼ Montaña</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Precalienta antes de DC</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲▲ ADAS</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🌦️</div>
+        <div class="h"><div class="t">Clima: calor · frío · lluvia</div><div class="r">Ajustes rápidos</div></div>
+        <span class="lvl b">🔵</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">☀️ Calor (Medellín, Santa Fe)</div><p>Preacondiciona <b>enchufado</b>, parquea a la sombra, usa ventilación de asiento. La “protección contra sobrecalentamiento” solo si dejas el carro <b>muchas horas al sol</b>. <span class="tag t-ex">🟦</span></p></div>
+        <div class="field"><div class="fl">❄️ Frío (Bogotá, Palmas de noche)</div><p>La batería rinde algo <b>menos</b> en frío y la regeneración puede limitarse con batería muy fría. Precalienta enchufado antes de salir. <span class="tag t-ex">🟦</span></p></div>
+        <div class="field"><div class="fl">🌧️ Lluvia</div><p>El AWD ayuda con la tracción, pero baja la regen a <b>Media</b> (regen Alta en piso mojado puede sentirse brusca). Luces en AUTO, más distancia, ESP siempre activo. <span class="tag t-ex">🟦</span></p></div>
+        <div class="rec">✔ Regla simple: <b>preacondicionar enchufado</b> resuelve calor y frío sin tocar tu autonomía. ★★★★★</div>
+      </div>
+    </details>
+
+    <!-- Tabla resumen Colombia -->
+    <div style="margin-top:18px" class="stitle"><span class="n">▤</span><h2>Resumen Colombia</h2><span class="line"></span></div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Escenario</th><th>Aceleración</th><th>Regen</th><th>Autonomía</th><th>Clave</th></tr></thead>
+        <tbody>
+          <tr><td>Medellín ciudad</td><td>Estándar</td><td>Normal</td><td>▲ Buena</td><td>Preacondicionar</td></tr>
+          <tr><td>Subir Palmas</td><td>Estándar/Deporte</td><td>Normal</td><td>▼▼ Baja</td><td>Ritmo constante</td></tr>
+          <tr><td>Bajar Palmas</td><td>Estándar</td><td>Deporte</td><td>▲▲ Recupera</td><td>Cuida frenos</td></tr>
+          <tr><td>Santa Fe</td><td>Estándar</td><td>Deporte (baj.)</td><td>▼ Vuelta cara</td><td>Salir cargado</td></tr>
+          <tr><td>Bogotá viaje</td><td>Estándar</td><td>Normal</td><td>▼ Montaña</td><td>Planear carga DC</td></tr>
+          <tr><td>Lluvia</td><td>Atenuado</td><td>Normal</td><td>— Normal</td><td>Distancia + luces</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">🟧 Los rangos de autonomía real son <b>estimaciones</b> (dependen de peso, velocidad, AC y conducción). La ficha oficial declara 420 km WLTP en condiciones de laboratorio.</div>
+  </section>
+
+  <!-- CAPÍTULO 4 · ACCESO INTELIGENTE -->
+  <section>
+    <div class="stitle"><span class="n">04</span><h2>Acceso inteligente</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">La “coreografía” de llegada y salida: el carro te recibe y te despide solo. Todo se configura en <b>Luces</b> y <b>Puertas y Ventanillas</b>. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">✨</div>
+        <div class="h"><div class="t">Llegada: luz de aproximación + bienvenida</div><div class="r">Luces ▸ Luces exteriores</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Al acercarte o desbloquear, las luces exteriores se encienden <b>30 s</b> para iluminar el camino (luz de aproximación). La <b>secuencia de bienvenida</b> añade un show de luces + sonido. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Luces ▸ Luces exteriores ▸ Luz de aproximación / Secuencia de bienvenida</span> <span class="tag t-of">🟩</span></div>
+        <div class="field"><div class="fl">Opciones de bienvenida</div><p>Apagado · Tenue · Divertido · Refrescante. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: luz de aproximación <b>ON</b> (útil de noche); bienvenida a gusto. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Ojo (dato del manual)</div>Si activas <b>aproximación + bienvenida a la vez</b>, se anula la luz de cortesía. Elige una experiencia. <span class="tag t-of">🟩</span></div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Mínimo</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Mínimo</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲ Ves mejor</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🖐️</div>
+        <div class="h"><div class="t">Manos libres: aproximación y 2 pasos</div><div class="r">Puertas y Ventanillas ▸ Puertas</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Con la llave UWB encima: el carro se <b>abre al acercarte</b> y se <b>cierra al alejarte</b>. Los tiradores (al ras) salen solos y los espejos se despliegan. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Puertas y Ventanillas ▸ Puertas ▸ Desbloqueo por aproximación / bloqueo al alejarse · Desbloqueo en 2 pasos</span> <span class="tag t-of">🟩</span></div>
+        <div class="field"><div class="fl">Cuándo cambiarla</div><p><b>2 pasos ON</b> = primer toque abre solo tu puerta; segundo, todas. Más seguro en la calle. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: aproximación ON + 2 pasos ON. Comodidad con control. ★★★★☆ <span class="tag t-pc">🟧 confirmar en tu unidad</span></div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Error común</div>Sensor del tirador con mugre/agua no responde. Y recuerda: la UWB puede fallar cerca de antenas o subestaciones. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 5 · BLOQUEO AUTOMÁTICO -->
+  <section>
+    <div class="stitle"><span class="n">05</span><h2>Bloqueo automático</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Que el carro se cierre solo es seguridad, sobre todo en ciudad. <span class="tag t-of">🟩 + 🟦</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🔒</div>
+        <div class="h"><div class="t">Bloqueo automático al conducir</div><div class="r">Se cierra solo al arrancar</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Con todas las puertas cerradas, al superar <b>cierta velocidad</b> el carro bloquea solo. Evita que abran una puerta en un semáforo. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: <b>siempre ON</b>. En Medellín/Bogotá es seguridad básica en trancones. ★★★★★ <span class="tag t-ex">🟦</span></div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲▲ Alta</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🔓</div>
+        <div class="h"><div class="t">Desbloqueo automático al salir</div><div class="r">Puertas y Ventanillas ▸ Puertas</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Al estacionar y poner Park, las puertas se desbloquean solas para que salgas sin tocar nada. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Puertas y Ventanillas ▸ Puertas ▸ Desbloqueo automático al salir</span> <span class="tag t-of">🟩</span></div>
+        <div class="field"><div class="fl">El dilema (seguridad)</div><p>Cómodo, pero deja el carro abierto apenas frenas. En zonas con inseguridad conviene <b>OFF</b> y abrir tú manualmente. <span class="tag t-ex">🟦</span></p></div>
+        <div class="rec">✔ Sergio: <b>OFF</b> para ciudad; ON solo en garaje/casa. Tú decides cuándo se abre. ★★★☆☆</div>
+        <div class="impact">
+          <div class="im"><div class="il">Comodidad</div><div class="iv pos">▲ Sube</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv neg">▼ Baja (ON)</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🚶</div>
+        <div class="h"><div class="t">Bloqueo al alejarte (walk-away)</div><div class="r">Con llave UWB</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Al alejarte con la UWB tras cerrar las puertas, el carro se bloquea solo. Se activa junto con el desbloqueo por aproximación (Cap. 4). <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Cuándo NO</div><p>Si sueles quedarte cerca del carro (lavándolo, cargando cosas) puede cerrarse cuando no quieres. Ahí, mejor OFF. <span class="tag t-ex">🟦</span></p></div>
+        <div class="rec">✔ Verifica siempre con un tirón de manija que quedó cerrado. La costumbre evita sustos. ★★★★☆</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 6 · ILUMINACIÓN -->
+  <section>
+    <div class="stitle"><span class="n">06</span><h2>Iluminación</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Todo vive en <b>Luces ▸ Luces exteriores</b> y <b>Luces ▸ Luces interiores</b> (o en el menú desplegable “Control de luces”). <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🔆</div>
+        <div class="h"><div class="t">Luces automáticas (AUTO)</div><div class="r">Sensor de lluvia/luz</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Cómo funciona</div><p>Un sensor en la parte alta del parabrisas mide la luz: prende las luces de cruce solo al oscurecer (túnel, noche) y las apaga con luz suficiente. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Luces ▸ Luces exteriores ▸ Luz automática</span> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Déjalo <b>siempre en AUTO</b>. En Medellín (túneles, aguaceros) evita ir sin luces por descuido. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Cuidado</div>No tapes el sensor del parabrisas (calcomanías, objetos): afecta luces automáticas y limpiaparabrisas. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🌟</div>
+        <div class="h"><div class="t">Luz alta automática (AHB)</div><div class="r">Palanca · antideslumbrante</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Con AHB activo, el carro pone luz alta en carretera oscura y la baja solo al detectar un carro de frente, para no encandilar. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Cómo activarlo</div><p>Con el carro andando y luces de cruce ON: empuja la palanca <b>hacia adelante 2 veces</b>. Para apagar: tira la palanca hacia el volante. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Ideal en carretera a Bogotá de noche. En ciudad iluminada no aporta. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Ojo</div>Es una <b>ayuda</b>, no un piloto: con niebla o lluvia fuerte puede fallar. Sigue tú atento a cambiar la luz. <span class="tag t-of">🟩</span></div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲▲ Noche</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🏠</div>
+        <div class="h"><div class="t">Follow-Me-Home (sígueme a casa)</div><div class="r">30 / 60 / 90 s</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Al salir del carro con poca luz, las luces siguen encendidas un rato para iluminarte el camino hasta la casa. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Luces ▸ Luces exteriores ▸ Follow-Me-Home</span> · Duración: Off / 30 / 60 / 90 s <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Sergio: <b>30 s</b>. Suficiente para llegar a la puerta sin gastar de más. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Dato corregido</div>El manual oficial ofrece 30/60/90 s (no 15 s). En una guía previa figuraba 15 s: aquí queda con el valor oficial. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🧊</div>
+        <div class="h"><div class="t">Luz ambiental “Bloque de hielo”</div><div class="r">Luces ▸ Luces interiores</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Iluminación interior en puertas, consola y bocinas (efecto “Bloque de hielo”, propio del Flagship). Ajustas <b>color</b>, <b>brillo</b> y <b>forma</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Formas</div><p>Monocromo · Respiración · Programa de música (baila con el sonido). La “respiración” solo funciona en monocromo. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Luces ▸ Luces interiores ▸ Luz ambiental (color / brillo / forma)</span> · aquí también van luz de <b>cortesía</b> y <b>despedida</b> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ A gusto. Un color tenue mejora el ambiente de noche sin distraer. ★★★☆☆</div>
+      </div>
+    </details>
+
+    <!-- Referencia rápida de luces -->
+    <div style="margin-top:18px" class="stitle"><span class="n">▤</span><h2>Referencia rápida de luces</h2><span class="line"></span></div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Función</th><th>Dónde / cómo</th><th>Sergio</th></tr></thead>
+        <tbody>
+          <tr><td>Luz automática</td><td>Luces ▸ Exteriores</td><td>AUTO</td></tr>
+          <tr><td>Luz alta auto (AHB)</td><td>Palanca ×2 adelante</td><td>ON carretera</td></tr>
+          <tr><td>Follow-Me-Home</td><td>Luces ▸ Exteriores</td><td>30 s</td></tr>
+          <tr><td>Aproximación</td><td>Luces ▸ Exteriores</td><td>ON</td></tr>
+          <tr><td>Antiniebla trasero</td><td>Luces ▸ Exteriores</td><td>Solo niebla</td></tr>
+          <tr><td>Luz ambiental</td><td>Luces ▸ Interiores</td><td>A gusto</td></tr>
+          <tr><td>Adelantamiento</td><td>Palanca al volante</td><td>Al pasar</td></tr>
+          <tr><td>Emergencia (estrella)</td><td>Botón · auto en choque</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">🟩 Rutas y comportamientos tomados del manual oficial ZEEKR X. Los intermitentes: palanca suave = 3 parpadeos; a fondo = fijo.</div>
+  </section>
+
+  <!-- CAPÍTULO 7 · PANTALLAS -->
+  <section>
+    <div class="stitle"><span class="n">07</span><h2>Pantallas</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Tres pantallas: central <b>14.6"</b>, clúster <b>8.8"</b> y <b>HUD</b> en el parabrisas. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">📺</div>
+        <div class="h"><div class="t">Las 3 pantallas</div><div class="r">Central · Clúster · HUD</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Central 14.6" FHD</div><p>El “cerebro”: menús, mapa, clima, cámaras. Esquina inferior izquierda = volver al inicio. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Clúster 8.8"</div><p>Frente al volante: velocidad, batería, marcha, testigos. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Menú desplegable</div><p>Desliza <b>desde arriba</b> en la central para accesos rápidos: control de luces, brillo, aire, HUD. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Aprende el gesto de deslizar desde arriba: es tu “control rápido” para todo. ★★★★☆</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🪟</div>
+        <div class="h"><div class="t">HUD (realidad aumentada)</div><div class="r">Conducción ▸ HUD · tecla derecha del volante</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Proyecta velocidad, asistencias y navegación en el parabrisas, para no bajar la vista. Es de <b>realidad aumentada</b> (exclusivo Flagship). <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta / ajuste</div><span class="route">Menú desplegable ▸ HUD  ·  o  Conducción ▸ HUD</span><p style="margin-top:6px">Con la <b>tecla direccional derecha del volante</b>: izq/der = brillo · arriba/abajo = altura. La posición se guarda en tu <b>perfil</b> (Cap. 2). <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Ajusta la altura sentado en tu posición real de manejo, una vez, y quedará memorizada. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Seguridad (manual)</div>No pongas el HUD tan alto/brillante que tape la vista, ni te quedes mirándolo: puedes perder de vista peatones. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🔅</div>
+        <div class="h"><div class="t">Brillo, CarPlay y Android Auto</div><div class="r">Pantalla ▸ Brillo automático</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Brillo</div><span class="route">Pantalla ▸ (deslizadores) + Brillo automático</span><p style="margin-top:6px">Ajusta central, clúster y retroiluminación; con Brillo automático se adapta a la luz. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Celular</div><p><b>CarPlay y Android Auto inalámbricos</b>: conecta el teléfono sin cable. <span class="tag t-of">🟩 ficha</span></p></div>
+        <div class="rec">✔ Sergio: Brillo automático ON. De noche baja solo y no encandila. ★★★★☆</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 8 · AIRE ACONDICIONADO -->
+  <section>
+    <div class="stitle"><span class="n">08</span><h2>Aire acondicionado</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Clima digital de <b>2 zonas</b> + AQS con filtro N95. En Medellín, tu mejor aliado contra el calor <b>sin</b> matar la autonomía. <span class="tag t-of">🟩 + 🟦</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">❄️</div>
+        <div class="h"><div class="t">AUTO + preacondicionar (el truco)</div><div class="r">App ZEEKR ▸ Aire acondicionado</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>En <b>AUTO</b>, el carro controla ventilador y reparto para llegar a la temperatura que pongas. Desde la <b>App</b> puedes prenderlo y programarlo a distancia. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">El truco de oro</div><p><b>Preacondiciona con el carro enchufado</b>: enfría la cabina usando la corriente del enchufe, no la batería. Llegas a un carro fresco con la autonomía intacta. <span class="tag t-of">🟩 (App) · 🟦 (impacto)</span></p></div>
+        <div class="field"><div class="fl">Ruta remota</div><span class="route">App ZEEKR ▸ Aire acondicionado ▸ encender / temperatura / programar</span> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Sergio: AUTO 22–23°. Antes de salir de casa/oficina (enchufado), enfría desde la App 10 min. ★★★★★</div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv pos">▲ Si enchufado</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Confort</div><div class="iv pos">▲▲ Alto</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🌬️</div>
+        <div class="h"><div class="t">Flujo y recirculación</div><div class="r">Interna / Externa / Automática</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Flujo de aire</div><p>Elige a dónde sale el aire (cara, pies, parabrisas). En AUTO lo decide el carro; si tocas manual, sale de AUTO. Dirección fina con “modo libre” deslizando. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Recirculación</div><p><b>Interna</b> (recircula el aire de adentro, enfría más rápido) · <b>Externa</b> (mete aire de afuera) · <b>Automática</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Con calor fuerte: arranca en <b>interna</b> para enfriar rápido, luego pásate a auto. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Aviso (manual)</div>No dejes recirculación <b>interna</b> mucho tiempo: empeora la calidad del aire (se enrarece). <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🫧</div>
+        <div class="h"><div class="t">Aire limpio (AQS + N95)</div><div class="r">Filtro anti-humo · zona limpia</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>El sensor <b>AQS</b> detecta contaminación afuera y cierra la entrada de aire, recirculando con filtro <b>N95</b>. Ideal detrás de buses/camiones o en trancón. Lo ves en la barra de estado. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Zona limpia (bonus)</div><p>Si el carro estuvo <b>+3 h</b> cerrado, al abrir la puerta mete aire fresco para bajar la temperatura antes de subirte. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Déjalo trabajar solo. En Medellín/Bogotá filtra el humo del tráfico sin que hagas nada. ★★★★★</div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Salud</div><div class="iv pos">▲▲ Aire limpio</div></div>
+          <div class="im"><div class="il">Confort</div><div class="iv pos">▲ Bueno</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🌫️</div>
+        <div class="h"><div class="t">Desempañado / descongelación</div><div class="r">Teclas inferiores de la central</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Quita el vaho del parabrisas delantero y trasero. Botones en la <b>parte inferior</b> de la pantalla central. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Dato útil</div><p>Al activar el <b>desempañado delantero</b>, el A/A se enciende solo y el aire va a <b>MAX</b> (son teclas enlazadas). El trasero también activa la calefacción de asientos según el manual. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ En lluvia de Medellín, un toque al desempañador delantero despeja el vidrio en segundos. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Seguridad</div>Nunca arranques con el parabrisas empañado o con vaho: primero despeja. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🐾</div>
+        <div class="h"><div class="t">Modo Mascota y Modo Descanso</div><div class="r">Clima con el carro estacionado</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Modo Mascota</div><p>Mantiene el clima y una pantalla avisando que hay una mascota adentro, para dejarla un rato con temperatura segura. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Modo Descanso</div><p>Ajusta el ambiente para descansar dentro del carro (clima + confort). <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Útil, pero con criterio: son <b>ayudas</b>, no dejan de vigilar por ti. ★★★☆☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Aviso (manual)</div>El Modo Mascota es auxiliar: no dejes mascotas o personas mucho tiempo solas confiando solo en él. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+    <div class="note">🟦 Regla de calor Medellín: <b>ventila el asiento</b> (Cap. 9) + preacondiciona enchufado. Enfriar toda la cabina a punta de batería es lo que más autonomía te quita.</div>
+  </section>
+
+  <!-- CAPÍTULO 9 · ASIENTOS -->
+  <section>
+    <div class="stitle"><span class="n">09</span><h2>Asientos</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Eléctricos con memoria, ventilación, calefacción y masaje. Ruta base: <b>Confort del asiento</b>. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">💺</div>
+        <div class="h"><div class="t">Ajuste, memoria y lumbar</div><div class="r">Botón lateral + perfil</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Cómo funciona</div><p>Botón lateral: altura del cojín, adelante/atrás y ángulo del respaldo. El Flagship suma <b>lumbar eléctrico de 4 direcciones</b>. Todo se guarda en tu <b>perfil</b> (Cap. 2). <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Ajusta una vez con tu perfil logueado → Memoria 1 “Sergio”. El carro te acomoda solo. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Seguridad (manual)</div>No ajustes el asiento en movimiento. Déjalo lo bastante atrás para pisar bien los pedales. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🧊</div>
+        <div class="h"><div class="t">Ventilación (calor)</div><div class="r">Confort del asiento ▸ Climatización del asiento</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Sopla aire fresco por el asiento. Es tu arma #1 contra el calor de Medellín. También se activa desde la <b>App</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Confort del asiento ▸ Climatización del asiento ▸ Ventilación (nivel)</span> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Sergio: ventilación antes que bajar el AC. Fresco inmediato gastando muchísimo menos. ★★★★★ <span class="tag t-ex">🟦</span></div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv pos">▲ Ahorra</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Neutro</div></div>
+          <div class="im"><div class="il">Confort</div><div class="iv pos">▲▲ Alto</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🔥</div>
+        <div class="h"><div class="t">Calefacción (frío)</div><div class="r">Niveles 1 · 2 · 3</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Calienta el asiento en clima frío (Bogotá, páramos, Palmas de noche). Niveles <b>1-2-3</b>. Desde la App puedes precalentar antes de subir. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Confort del asiento ▸ Climatización del asiento ▸ Calefacción (1/2/3)</span> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Truco de eficiencia: calienta el <b>asiento</b> (y el volante) en vez de subir el AC a full → gastas menos batería en frío. ★★★★☆ <span class="tag t-ex">🟦</span></div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Aviso (manual)</div>No uses la calefacción con quien no perciba bien la temperatura (bebés, enfermos): riesgo de quemadura. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">💆</div>
+        <div class="h"><div class="t">Masaje y bloqueo infantil</div><div class="r">Confort del asiento ▸ Vibración</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Masaje</div><p>Intensidad baja-media-alta y varios modos. Desde el <b>botón lateral</b> (gira el selector) o en pantalla. <span class="tag t-of">🟩</span></p><span class="route">Confort del asiento ▸ Vibración</span></div>
+        <div class="field"><div class="fl">Bloqueo infantil</div><p>Bloquea las puertas traseras para que los niños no las abran. <span class="tag t-of">🟩</span></p><span class="route">Ajuste de puertas ▸ Bloqueo infantil  (o control rápido del desplegable)</span></div>
+        <div class="rec">✔ Con niños atrás: bloqueo infantil <b>ON</b> siempre. El masaje, para el trancón. ★★★★☆</div>
+      </div>
+    </details>
+
+    <!-- Tabla asientos -->
+    <div style="margin-top:18px" class="stitle"><span class="n">▤</span><h2>Confort del asiento · resumen</h2><span class="line"></span></div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Función</th><th>Ruta</th><th>Cuándo</th><th>Sergio</th></tr></thead>
+        <tbody>
+          <tr><td>Memoria</td><td>Perfil / botón</td><td>Siempre</td><td>Memoria 1</td></tr>
+          <tr><td>Ventilación</td><td>Confort ▸ Climatización</td><td>Calor</td><td>1er recurso</td></tr>
+          <tr><td>Calefacción</td><td>Confort ▸ Climatización</td><td>Frío</td><td>Nivel 1–2</td></tr>
+          <tr><td>Masaje</td><td>Confort ▸ Vibración</td><td>Trancón</td><td>A gusto</td></tr>
+          <tr><td>Bloqueo infantil</td><td>Ajuste de puertas</td><td>Con niños</td><td>ON</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">🟩 Rutas y niveles del manual oficial ZEEKR X. Ventilación y calefacción también se controlan desde la App ZEEKR (útil para preacondicionar).</div>
+  </section>
+
+  <!-- CAPÍTULO 10 · ESPEJOS -->
+  <section>
+    <div class="stitle"><span class="n">10</span><h2>Espejos</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Exteriores eléctricos (con memoria) e interior electrocrómico que se oscurece solo. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🪞</div>
+        <div class="h"><div class="t">Espejos exteriores: ajuste y memoria</div><div class="r">Conducción ▸ (ajuste retrovisor) · volante</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Cómo funciona</div><p>Abres el ajuste desde el menú desplegable o en <b>Conducción</b>, eliges izquierdo/derecho y mueves con la <b>tecla direccional derecha del volante</b>. Se guarda en tu <b>perfil</b> (Guardar / Restaurar). <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Menú desplegable ▸ (icono espejos)  ·  o  Conducción ▸ ajuste de retrovisor</span> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Ajústalos logueado y en Park → quedan en “Sergio” y vuelven solos. Plegado automático al cerrar: ON. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Cuidado (manual)</div>No muevas el cristal del espejo con la mano: daña el motorcito. Ajústalo siempre desde el volante/pantalla. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🌡️</div>
+        <div class="h"><div class="t">Calefacción de espejos</div><div class="r">Va con el desempañado trasero</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Quita rápido la niebla y la escarcha de los espejos. <b>Comparte botón</b> con el desempañado/deshielo trasero: al activar ese, se calientan los espejos. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ En lluvia de Medellín o frío de Bogotá, un toque al desempañado trasero te despeja vidrio y espejos. ★★★★☆</div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Mínimo</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Mínimo</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲ Ves mejor</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🌙</div>
+        <div class="h"><div class="t">Retrovisor interior automático</div><div class="r">Electrocrómico · anti-deslumbre</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Se <b>oscurece solo</b> cuando el carro de atrás te apunta con las luces, para no encandilarte. Deja de atenuarse en reversa (R) o apagado. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ No tienes que hacer nada: trabaja solo de noche. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Cuidado (manual)</div>Tiene un sensor: no lo limpies con químicos fuertes ni cuelgues cosas del espejo. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 11 · VOLANTE -->
+  <section>
+    <div class="stitle"><span class="n">11</span><h2>Volante</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Ajuste manual, teclas multifunción, asistente de voz y calefacción. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🎚️</div>
+        <div class="h"><div class="t">Ajuste del volante</div><div class="r">Palanca · solo con el carro parado</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Cómo</div><p>Empuja la palanca de bloqueo <b>hacia abajo</b>, acomoda el volante (arriba/abajo y adelante/atrás), y sube la palanca para bloquear. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Postura correcta: brazos ligeramente flexionados, muñeca alcanza el aro. Ajusta con el carro <b>parado</b>. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Seguridad (manual)</div>Asegúrate de que quede bien bloqueado (muévelo para probar). Nunca lo ajustes en movimiento. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🔘</div>
+        <div class="h"><div class="t">Teclas y asistente de voz</div><div class="r">Multifunción · personalizables · IA</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Teclas direccionales</div><p>Las teclas <b>izquierda/derecha</b> son multifunción: con ellas ajustas HUD, espejos y el nivel de regeneración según lo que tengas activo en pantalla. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Personalizables</div><p>Puedes asignar funciones (pitido, DVR/grabar clip, etc.) a las teclas de personalización. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Asistente de voz (IA)</div><p>Botón del asistente en el volante (o dilo por voz) para clima, mapa, llamadas sin soltar el volante. <span class="tag t-of">🟩 + ficha</span></p></div>
+        <div class="rec">✔ Aprende una sola cosa: la <b>tecla derecha</b> del volante ajusta el HUD y los espejos. ★★★★☆</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">♨️</div>
+        <div class="h"><div class="t">Volante calefactable</div><div class="r">Por App · clima frío</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Calienta el aro en frío (Bogotá, páramos). Puedes precalentarlo desde la <b>App</b> antes de subir. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Truco de eficiencia en frío: volante + asiento calientes gastan menos que subir el AC a full. ★★★★☆ <span class="tag t-ex">🟦</span></div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Dato (manual)</div>La calefacción del volante <b>no funciona</b> con el modo de aceleración <b>Atenuado</b> activado. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 12 · MODOS DE CONDUCCIÓN -->
+  <section>
+    <div class="stitle"><span class="n">12</span><h2>Modos de conducción</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Aquí está la verdad: el ZEEKR X no tiene un botón único “Sport/Eco”. Tiene <b>4 ajustes independientes</b> en <b>Conducción</b>. <span class="tag t-of">🟩</span></p>
+
+    <!-- Traducción de términos -->
+    <div class="card sergio">
+      <div class="badge">◈ Traducción de términos (importante)</div>
+      <p style="font-size:12.5px;color:#dfe2e8;margin:0 0 8px">En capítulos anteriores usé nombres coloquiales (Comfort/Eco/Sport) para que se entendiera. Estos son los <b>nombres reales del menú</b>: <span class="tag t-of">🟩</span></p>
+      <div class="srow"><span class="k">“Eco / suave”</span><span class="v">Aceleración: Atenuado</span></div>
+      <div class="srow"><span class="k">“Comfort / normal”</span><span class="v">Aceleración: Estándar</span></div>
+      <div class="srow"><span class="k">“Sport”</span><span class="v">Aceleración: Deporte</span></div>
+      <div class="srow"><span class="k">“ePedal / un pedal”</span><span class="v">Estacionamiento: Mantener</span></div>
+      <div class="srow"><span class="k">“Regen alta”</span><span class="v">Regeneración: Deporte</span></div>
+    </div>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">⚡</div>
+        <div class="h"><div class="t">Modo de aceleración</div><div class="r">Conducción ▸ Aceleración</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Atenuado (Sutil)</div><p>Respuesta suave del acelerador → <b>más autonomía</b> y marcha relajada. Ideal ciudad/lluvia. Ojo: desactiva el volante calefactable. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Estándar</div><p>Respuesta equilibrada. <b>Tu modo del día a día.</b> <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Deporte</div><p>Respuesta rápida, todo el empuje del AWD (422 hp). Para adelantar o disfrutar. Gasta más. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: <b>Estándar</b> siempre; <b>Deporte</b> puntual para adelantar en Las Palmas; <b>Atenuado</b> en lluvia o para exprimir autonomía. ★★★★★</div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv pos">▲ Atenuado</div></div>
+          <div class="im"><div class="il">Desempeño</div><div class="iv pos">▲▲ Deporte</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv neu">— Igual</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🕹️</div>
+        <div class="h"><div class="t">Asistencia a la dirección</div><div class="r">Conducción ▸ Dirección</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Confort</div><p>Volante <b>liviano</b>, gira con poco esfuerzo. Perfecto para ciudad y parquear. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Normal / Deporte</div><p>Normal = medio. Deporte = volante <b>más pesado y firme</b>, mejor tacto en carretera rápida. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: <b>Confort</b> en Medellín; prueba Deporte en carretera si te gusta el volante firme. ★★★★☆</div>
+        <div class="note" style="margin-top:8px">La dirección <b>no</b> afecta autonomía ni potencia: es solo cuánta fuerza haces al girar.</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🛑</div>
+        <div class="h"><div class="t">Al soltar el acelerador</div><div class="r">Conducción ▸ Estacionamiento: Arrastrar / Mantener</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Arrastrar</div><p>Al soltar, el carro <b>sigue rodando</b> suave (como “punto muerto”). Se siente como un carro normal. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Mantener (= ePedal)</div><p>Al soltar, <b>frena hasta detenerse solo</b> y activa Autohold. Manejas casi con <b>un solo pedal</b>. Recupera más energía. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: <b>Mantener (ePedal)</b> para ciudad y bajar Las Palmas (máxima recuperación y menos freno). ★★★★★</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Consejo PRO</div>Regeneración + Mantener = frenas poquísimo con el pedal → cuidas pastillas y sumas kilómetros. Detalle completo en Cap. 13. <span class="tag t-ex">🟦</span></div>
+          <div class="co err"><div class="cl">Ojo (manual)</div>El frenado regenerativo es <b>ayuda</b>, no reemplaza el freno. En emergencia, pisa el pedal. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🏔️</div>
+        <div class="h"><div class="t">Nieve, Off-road y tracción AWD</div><div class="r">Conducción ▸ Modo nieve · Off-road</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">AWD inteligente</div><p>Tu carro va como <b>tracción trasera</b> en ciudad (más eficiente) y pasa a <b>4×4</b> solo cuando exiges potencia, aceleras fuerte o hay poco agarre. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Modo Nieve</div><p>Para hielo/nieve. En Colombia casi nunca lo usarás (solo páramos muy fríos). Desactiva modos de aceleración, Mantener, ACC y LCC. <span class="tag t-of">🟩 + 🟦</span></p></div>
+        <div class="field"><div class="fl">Modo Off-road</div><p>Exclusivo del <b>Flagship AWD</b>: para destapado/barro. Úsalo solo fuera de asfalto. <span class="tag t-of">🟩 ficha</span></p></div>
+        <div class="rec">✔ Para tus fincas/destapados: Off-road puntual. En Palmas/ciudad, deja que el AWD trabaje solo. ★★★★☆</div>
+      </div>
+    </details>
+
+    <!-- Configuración Sergio traducida -->
+    <div style="margin-top:18px" class="stitle"><span class="n">★</span><h2>Configuración Sergio (oficial)</h2><span class="line"></span></div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Situación</th><th>Aceleración</th><th>Dirección</th><th>Regen</th><th>Al soltar</th></tr></thead>
+        <tbody>
+          <tr><td>Ciudad Medellín</td><td>Estándar</td><td>Confort</td><td>Normal</td><td>Mantener</td></tr>
+          <tr><td>Subir Palmas</td><td>Estándar/Deporte</td><td>Confort</td><td>Normal</td><td>Arrastrar</td></tr>
+          <tr><td>Bajar Palmas</td><td>Estándar</td><td>Confort</td><td>Deporte</td><td>Mantener</td></tr>
+          <tr><td>Carretera</td><td>Estándar</td><td>Normal/Dep.</td><td>Normal</td><td>Arrastrar</td></tr>
+          <tr><td>Lluvia</td><td>Atenuado</td><td>Confort</td><td>Normal</td><td>Mantener</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">🟩 Nombres exactos del menú <b>Conducción</b> del ZEEKR X. La regeneración a fondo (cuánto recupera, cuándo NO funciona) va en el <b>Cap. 13</b>.</div>
+  </section>
+
+  <!-- CAPÍTULO 13 · REGENERACIÓN -->
+  <section>
+    <div class="stitle"><span class="n">13</span><h2>Regeneración</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Frenar “devolviendo” energía a la batería. Tu mayor aliado bajando Las Palmas. <span class="tag t-of">🟩 + 🟦</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🔋</div>
+        <div class="h"><div class="t">Qué es y cuánto recupera</div><div class="r">Conducción ▸ Regeneración: Normal / Deporte</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Cómo funciona</div><p>Al soltar el acelerador o frenar, el motor trabaja al revés (como dínamo) y convierte el movimiento en electricidad que vuelve a la batería, sumando autonomía. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Los 2 niveles</div><p><b>Normal</b>: retención suave, marcha cómoda. <b>Deporte</b>: retención fuerte al soltar (frena solo más, puede sentirse brusco al inicio). <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Ciudad: <b>Normal</b>. Bajadas largas (Palmas): <b>Deporte</b> + Mantener. ★★★★★</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Dato útil</div>Cuando la regen frena fuerte, las <b>luces de freno se encienden solas</b> para avisar al de atrás. <span class="tag t-of">🟩</span></div>
+        </div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv pos">▲▲ Suma</div></div>
+          <div class="im"><div class="il">Frenos</div><div class="iv pos">▲▲ Protege</div></div>
+          <div class="im"><div class="il">Batería</div><div class="iv neu">— Cuida</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🚫</div>
+        <div class="h"><div class="t">Cuándo NO funciona (clave)</div><div class="r">Batería llena o muy fría · ABS/ESP</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Según el manual</div><p>La regen se corta o baja si: se activa el <b>ABS</b>, se activa el <b>ESP</b>, o vas a muy baja velocidad en modo “Arrastrar”. Y depende del estado de la batería, el nivel elegido y la velocidad. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">El detalle que casi nadie sabe</div><p>Con la <b>batería llena (100%)</b> o <b>muy fría</b>, casi no hay dónde meter la energía → la regen se reduce y frenarás más con el pedal. <span class="tag t-ex">🟦 + 🟩</span></p></div>
+        <div class="rec">✔ Truco Palmas: si vas a <b>bajar</b>, no salgas al 100%. Con ~80–90% la regen recupera de sobra y frenas con el motor. ★★★★★ <span class="tag t-ex">🟦</span></div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Seguridad (manual)</div>La regeneración es <b>ayuda</b>, no reemplaza el freno. En emergencia o pendiente fuerte, pisa el pedal. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🦶</div>
+        <div class="h"><div class="t">Un solo pedal (Regen + Mantener)</div><div class="r">La técnica para Las Palmas</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">La combinación</div><p>Regen <b>Deporte</b> + al soltar <b>Mantener</b> = manejas casi con un pedal: sueltas y el carro frena y recupera; casi no tocas el freno. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Bajando Las Palmas así: recuperas kilómetros, los frenos no se recalientan y llegas abajo con más % del que crees. ★★★★★ <span class="tag t-ex">🟦</span></div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv pos">▲▲ Recupera</div></div>
+          <div class="im"><div class="il">Frenos</div><div class="iv pos">▲▲ Fríos</div></div>
+          <div class="im"><div class="il">Seguridad</div><div class="iv pos">▲ Control</div></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 14 · ADAS -->
+  <section>
+    <div class="stitle"><span class="n">14</span><h2>ADAS · ZEEKR AD</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">12 asistencias a la conducción. Todas se configuran en <b>ZEEKR AD ▸ Conductor inteligente</b>. <span class="tag t-of">🟩</span></p>
+
+    <div class="card" style="border-color:rgba(255,90,90,.3);background:rgba(255,90,90,.06)">
+      <div style="font-size:11px;font-weight:800;color:#ff9a9a;letter-spacing:.5px;margin-bottom:4px">⚠️ LO MÁS IMPORTANTE</div>
+      <p style="font-size:12.5px;color:#dfe2e8;margin:0">Son <b>ayudas</b>, NO conducción autónoma. Manos al volante y ojos al frente <b>siempre</b>. No reaccionan bien a peatones, motos, animales ni en mal clima. Tú eres el responsable. <span class="tag t-of">🟩</span></p>
+    </div>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🛣️</div>
+        <div class="h"><div class="t">ACC · Crucero adaptativo</div><div class="r">Mantiene velocidad y distancia</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Mantiene la velocidad que pongas y <b>la distancia</b> con el carro de adelante (acelera y frena solo). Funciona entre <b>30 y 150 km/h</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Cómo</div><p>Se activa con la palanca del crucero; ajustas velocidad e intervalo de distancia. Si frenas, se desactiva; lo reactivas con el volante. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Oro puro en el viaje a Bogotá: reduce el cansancio muchísimo. ★★★★★</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🎯</div>
+        <div class="h"><div class="t">LCC · Centrado de carril</div><div class="r">Mantiene el carro centrado</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Trabaja con el ACC y mueve suavemente el volante para mantenerte <b>centrado en el carril</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Cuándo NO</div><p>No en intersecciones, ni con lluvia fuerte, ni donde no hay líneas claras, ni con peatones/ciclistas cerca. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ En autopista con buenas líneas, ACC + LCC = viaje relajado. En vías de montaña sin líneas, apágalo. ★★★★☆</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🛡️</div>
+        <div class="h"><div class="t">Los guardianes (se activan solos)</div><div class="r">BSD · RCTA/FCTA · DOW · Frenado emergencia</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Punto ciego (BSD)</div><p>Avisa si viene un carro en tu punto ciego al cambiar de carril. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Tráfico cruzado (RCTA/FCTA)</div><p>Al salir de reversa de un parqueo, avisa de carros que cruzan por los lados. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Apertura de puertas (DOW)</div><p>Avisa antes de abrir la puerta si viene una moto o ciclista por detrás. <b>Clave en Medellín.</b> <span class="tag t-of">🟩 + 🟦</span></p></div>
+        <div class="field"><div class="fl">Frenado de emergencia (CMSF)</div><p>Si detecta choque frontal inminente, frena para reducir el golpe. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Déjalos <b>siempre activos</b>. Trabajan de fondo y un día te salvan de un raye o un golpe. ★★★★★</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">👁️</div>
+        <div class="h"><div class="t">DPS · Monitor de fatiga</div><div class="r">ZEEKR AD ▸ Conductor inteligente</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Una cámara vigila tus ojos/cara y te avisa si detecta sueño o distracción. No detecta si tienes el intermitente puesto. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ En viajes largos, hazle caso: si te avisa, para y descansa. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Nota (manual)</div>El DPS solo avisa, no toma el control. La responsabilidad de parar a descansar es tuya. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Tabla 12 ADAS -->
+    <div style="margin-top:18px" class="stitle"><span class="n">▤</span><h2>Las 12 asistencias</h2><span class="line"></span></div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Sigla</th><th>Qué hace</th><th>Sergio</th></tr></thead>
+        <tbody>
+          <tr><td>ACC</td><td>Crucero adaptativo</td><td>Carretera</td></tr>
+          <tr><td>LCC</td><td>Centrado de carril</td><td>Autopista</td></tr>
+          <tr><td>LKA</td><td>Mantenimiento de carril</td><td>ON</td></tr>
+          <tr><td>BSD</td><td>Punto ciego</td><td>ON</td></tr>
+          <tr><td>RCTA/FCTA</td><td>Tráfico cruzado</td><td>ON</td></tr>
+          <tr><td>DOW</td><td>Aviso apertura puertas</td><td>ON</td></tr>
+          <tr><td>CMSF</td><td>Frenado de emergencia</td><td>ON</td></tr>
+          <tr><td>DPS</td><td>Fatiga del conductor</td><td>ON</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">🟩 Nombres de la ficha oficial (ZEEKR AD, 12 asistencias). Ruta común: <b>ZEEKR AD ▸ Conductor inteligente</b>.</div>
+  </section>
+
+  <!-- CAPÍTULO 15 · ASISTENTE DE PARQUEO -->
+  <section>
+    <div class="stitle"><span class="n">15</span><h2>Asistente de parqueo</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Cámara 360, parqueo automático y freno de reversa. Adiós a rayar los rines. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🎥</div>
+        <div class="h"><div class="t">Cámara 360 (visión envolvente)</div><div class="r">4 cámaras · 2D/3D · modelo transparente</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>4 cámaras arman una vista <b>desde arriba</b> del carro en la pantalla, para parquear sin golpear. Tiene modo 2D y 3D y hasta un <b>“modelo transparente”</b> para ver el piso debajo del carro. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Cómo se abre</div><p>Al poner <b>reversa (R)</b>, por voz, con el botón en pantalla, o sola en <b>canales estrechos</b> (&lt;12 km/h) y al usar el intermitente a baja velocidad. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: úsala siempre para parquear. En garajes estrechos de Medellín, el modo transparente evita golpes contra bordillos. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Aviso (manual)</div>Es ayuda: las cámaras tienen puntos ciegos y los objetos se ven más lejos de lo que están. Mira también por fuera. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🅿️</div>
+        <div class="h"><div class="t">Parqueo automático (semiautónomo)</div><div class="r">El carro se estaciona solo</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Detecta un espacio y <b>maniobra solo</b> (volante, avance y reversa) para estacionarse. Tú supervisas y puedes frenar en cualquier momento. <span class="tag t-of">🟩 ficha: parqueo semiautónomo</span></p></div>
+        <div class="rec">✔ Útil para paralelo apretado. Ve despacio la primera vez para agarrarle confianza. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Ojo</div>Los sensores no “ven” bien columnas delgadas, árboles pequeños o superficies que absorben el ultrasonido. Supervisa siempre. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🛑</div>
+        <div class="h"><div class="t">Freno de reversa (PEB) y descenso (HDC)</div><div class="r">Protecciones a baja velocidad</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">PEB (freno en reversa)</div><p>Si en reversa detecta un obstáculo atrás, <b>frena solo</b> para evitar o reducir el golpe. Se configura en <b>ZEEKR AD ▸ Conductor inteligente</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">HDC (control de descenso)</div><p>En bajadas empinadas o destapado, mantiene una <b>velocidad baja y constante</b> sin que pises el freno. Ideal para fincas/trochas. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ PEB déjalo ON. HDC actívalo solo en bajadas de tierra o muy pronunciadas. ★★★★☆</div>
+      </div>
+    </details>
+    <div class="note">🟩 Cámaras y asistencias de parqueo del manual oficial ZEEKR X. Todas son auxiliares: tú sigues siendo el responsable de la maniobra.</div>
+  </section>
+
+  <!-- CAPÍTULO 16 · CARGA AC -->
+  <section>
+    <div class="stitle"><span class="n">16</span><h2>Carga AC (en casa)</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">La carga del día a día. Lenta, suave con la batería y barata de noche. Tu ZEEKR acepta hasta <b>22 kW AC</b>. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🏡</div>
+        <div class="h"><div class="t">Tu Wallbox ZEEKR</div><div class="r">7 / 11 / 22 kW · Tipo 2</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué es</div><p>El cargador de pared ZEEKR (conector <b>Tipo 2</b>, cable 5 m). Viene en 7, 11 o 22 kW; se maneja con la <b>App ZEEKR</b> y trae RFID. <span class="tag t-of">🟩 ficha Wallbox</span></p></div>
+        <div class="field"><div class="fl">Tiempos aprox. (10 → 100%)</div><p>22 kW ≈ <b>3 h</b> · 11 kW ≈ <b>6 h</b> · 7 kW ≈ <b>9–10 h</b>. <span class="tag t-ex">🟦 estimación</span></p></div>
+        <div class="rec">✔ Con el 22 kW cargas de sobra en una noche. Enchufa al llegar y olvídate. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Ojo</div>El enchufe doméstico normal (toma de pared) es <b>solo para emergencia</b>: carga lentísima. Para casa, wallbox. <span class="tag t-ex">🟦</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🎚️</div>
+        <div class="h"><div class="t">Límite de carga al 80%</div><div class="r">Carga y Descarga ▸ Cargando mi coche</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Un deslizador para poner el <b>tope</b> de carga (ej. 80%). El carro para solo ahí. Como tu batería es <b>NMC</b>, cargar al 80% a diario la cuida (ver Cap. 18). <span class="tag t-of">🟩 (función) · 🟦 (80%)</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Carga y Descarga ▸ Cargando mi coche ▸ Límite de carga (deslizador)</span> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Sergio: tope diario <b>80%</b>. Súbelo a 100% solo el día antes de un viaje. ★★★★★</div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv neu">— Diaria OK</div></div>
+          <div class="im"><div class="il">Vida batería</div><div class="iv pos">▲▲ Alarga</div></div>
+          <div class="im"><div class="il">Costo</div><div class="iv pos">▲ Ahorra</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🌙</div>
+        <div class="h"><div class="t">Carga programada y Salida programada</div><div class="r">Tarifa de noche + preacondicionar</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Carga programada</div><p>Programa la carga a la hora en que la luz es más barata (noche). <b>Solo funciona en AC</b>, no en carga rápida DC. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Salida programada (joya)</div><p>Le dices la hora a la que sales y el carro, <b>enchufado</b>, prepara batería, cabina, asientos y volante usando la corriente de la red. Sales con el carro listo y sin gastar batería. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Sergio: carga a medianoche + salida programada 6:30 a.m. Carro fresco/tibio y cargado, gastando luz barata. ★★★★★</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Consejo PRO</div>Apaga el “mantenimiento de temperatura de la batería” salvo con frío extremo (&lt;0°) o calor extremo (&gt;40°): así ahorras energía. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 17 · CARGA DC -->
+  <section>
+    <div class="stitle"><span class="n">17</span><h2>Carga DC (rápida, en viaje)</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">La carga de carretera. Hasta <b>150 kW</b>: de 10 a 80% en <b>33 min</b>. Para viajes, no para el diario. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">⚡</div>
+        <div class="h"><div class="t">Cómo cargar rápido</div><div class="r">150 kW · 10→80% en 33 min</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Pasos</div><p>Desbloquea la tapa de carga desde la pantalla/app, conecta la pistola del cargador CC y sigue las instrucciones de la estación. Un <b>LED</b> en el puerto muestra el estado. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Carga hasta 80%</div><p>De 10 a 80% son ~33 min; del 80 al 100% se vuelve <b>lento</b> (la batería se protege). En ruta, cargar hasta 80% y seguir es lo más rápido. <span class="tag t-of">🟩 (33 min) · 🟦 (curva)</span></p></div>
+        <div class="rec">✔ En viaje a Bogotá: para al 10–15%, carga al 80% y sigue. Es la estrategia más veloz. ★★★★★</div>
+        <div class="impact">
+          <div class="im"><div class="il">Velocidad</div><div class="iv pos">▲▲ Rápida</div></div>
+          <div class="im"><div class="il">Vida batería</div><div class="iv neg">▼ Si abusas</div></div>
+          <div class="im"><div class="il">Viaje</div><div class="iv pos">▲▲ Ideal</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🌡️</div>
+        <div class="h"><div class="t">Frío = carga más lenta</div><div class="r">Precalentar la batería</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué pasa</div><p>Con frío, parte de la corriente se usa para calentar la batería, así que carga más lento (o poco). En Bogotá/páramos esto se nota. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Truco</div><p>Si vienes manejando, la batería ya va tibia y carga mejor. La “salida programada” también la deja a buena temperatura. <span class="tag t-ex">🟦 + 🟩</span></p></div>
+        <div class="rec">✔ Llega al cargador DC con la batería “en uso” (recién manejada), no fría de estar parada. ★★★★☆</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🔌</div>
+        <div class="h"><div class="t">Bonus: tu carro como enchufe (V2L)</div><div class="r">Carga y Descarga ▸ Alimentar otro dispositivo</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>El ZEEKR puede <b>dar corriente</b> para luces, un microondas de bajo consumo o incluso ayudar a otro eléctrico. Pones un límite de descarga y listo. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Perfecto para la finca, camping o una emergencia de luz. ★★★★☆</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Seguridad (manual)</div>No manipules el equipo conectado mientras está encendido; haz los chequeos antes. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 18 · BATERÍA -->
+  <section>
+    <div class="stitle"><span class="n">18</span><h2>Batería</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Tu batería es <b>NMC de 69 kWh</b>. Esto cambia cómo la debes cuidar. Léelo bien. <span class="tag t-of">🟩</span></p>
+
+    <div class="card" style="border-color:rgba(90,208,196,.35);background:rgba(90,208,196,.07)">
+      <div style="font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.5px;margin-bottom:4px">⭐ LA REGLA DE ORO</div>
+      <p style="font-size:13px;color:#dfe2e8;margin:0"><b>Diario: 20 – 80%.</b> Carga al <b>100% solo el día antes de un viaje</b>. No la dejes llena ni vacía por mucho tiempo. <span class="tag t-of">🟩 (química NMC) · 🟦 (buena práctica EV)</span></p>
+    </div>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🔋</div>
+        <div class="h"><div class="t">Por qué 20–80% (NMC)</div><div class="r">No es igual que otras baterías</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">El dato clave</div><p>Tu AWD usa batería <b>NMC</b> (no LFP como la versión Sport). Las NMC <b>se desgastan más</b> si viven al 100% o al 0%. Mantenerlas en la zona media (20–80%) alarga su vida. <span class="tag t-of">🟩 (es NMC) · 🟦 (cuidado)</span></p></div>
+        <div class="rec">✔ Pon el tope en 80% (Cap. 16) y olvídate. Solo el día del viaje, súbelo a 100%. ★★★★★</div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Error común</div>Cargar al 100% “por si acaso” todos los días. Con NMC, eso le resta vida útil sin que lo necesites. <span class="tag t-ex">🟦</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">☀️</div>
+        <div class="h"><div class="t">Calor, frío y salud a largo plazo</div><div class="r">Medellín / Bogotá</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Calor</div><p>Evita dejar el carro <b>al sol y al 100%</b> por horas. El carro tiene control térmico automático, pero la sombra siempre ayuda. <span class="tag t-of">🟩 (control térmico) · 🟦</span></p></div>
+        <div class="field"><div class="fl">Frío</div><p>En frío rinde y carga menos; es normal y temporal. Precalienta enchufado antes de salir. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Largo plazo</div><p>La <b>carga AC diaria es más suave</b> que la DC. Usa la rápida (DC) para viajes, no todos los días. Nunca la lleves seguido a 0%. <span class="tag t-ex">🟦</span></p></div>
+        <div class="rec">✔ AC en casa a diario + DC solo en ruta = batería sana por años. ★★★★★</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🛡️</div>
+        <div class="h"><div class="t">Garantía y degradación</div><div class="r">8 años / 160.000 km</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué cubre</div><p>La batería de alto voltaje tiene garantía de <b>8 años o 160.000 km</b> (lo que pase primero). <span class="tag t-of">🟩 ficha</span></p></div>
+        <div class="field"><div class="fl">Es normal</div><p>Con los años la autonomía baja un poco (degradación natural). Cuidarla (20–80%, AC diaria) hace que baje más despacio. <span class="tag t-of">🟩 + 🟦</span></p></div>
+        <div class="rec">✔ Guarda tus hábitos: son la mejor “extensión de garantía” gratis que existe. ★★★★★</div>
+      </div>
+    </details>
+
+    <!-- Tabla batería -->
+    <div style="margin-top:18px" class="stitle"><span class="n">▤</span><h2>Batería: sí y no</h2><span class="line"></span></div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Situación</th><th>Haz esto</th><th>Evita</th></tr></thead>
+        <tbody>
+          <tr><td>Uso diario</td><td>Tope 80% · AC casa</td><td>100% a diario</td></tr>
+          <tr><td>Antes de viaje</td><td>100% ese día</td><td>Dejarlo lleno días</td></tr>
+          <tr><td>En viaje</td><td>DC 10→80%</td><td>Esperar al 100% en DC</td></tr>
+          <tr><td>Estacionar largo</td><td>Dejarlo ~50%</td><td>0% o 100%</td></tr>
+          <tr><td>Calor</td><td>Sombra</td><td>Sol + 100%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">🟩 Química (NMC), capacidad (69 kWh) y garantía (8a/160.000 km) son de la ficha oficial. 🟦 Los rangos 20–80% son buena práctica reconocida para baterías NMC.</div>
+  </section>
+
+  <!-- CAPÍTULO 19 · AUTONOMÍA -->
+  <section>
+    <div class="stitle"><span class="n">19</span><h2>Autonomía</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">La ficha dice <b>420 km WLTP</b>. Eso es de laboratorio. Aquí está la verdad en tu montaña. <span class="tag t-of">🟩 + 🟦</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">📏</div>
+        <div class="h"><div class="t">WLTP vs. realidad</div><div class="r">420 km lab → menos en Colombia</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">La cifra oficial</div><p><b>420 km WLTP</b>: una prueba estándar en condiciones ideales, sin montañas ni calor real. La misma ficha aclara que en uso real <b>varía</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">En tu día a día</div><p>Ciudad Medellín con regen: se acerca bastante. Carretera de montaña con AC: cuenta con <b>menos</b>. Rango realista mixto ≈ <b>300–360 km</b>. <span class="tag t-pc">🟧 estimación</span></p></div>
+        <div class="rec">✔ No manejes por “kilómetros”, maneja por <b>%</b>. Aprende cuánto gasta tu ruta habitual y planea con eso. ★★★★★</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">📉</div>
+        <div class="h"><div class="t">Qué te baja la autonomía</div><div class="r">Factores oficiales de la ficha</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Según la ficha (oficial)</div><p>Velocidad alta · uso del aire acondicionado · tipo y <b>presión de las llantas</b> · no preacondicionar · topografía (montaña) · tráfico · temperatura y clima. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Lo que más pesa aquí</div><p>1) Subir montaña · 2) Velocidad &gt;100 km/h · 3) AC a full con calor · 4) Llantas bajas de presión. <span class="tag t-ex">🟦</span></p></div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Error común</div>Rodar con las <b>llantas bajas</b> de presión: gastas más batería y desgastas la llanta. Revísalas. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">📈</div>
+        <div class="h"><div class="t">Cómo estirarla (checklist)</div><div class="r">Sin sufrir</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Los 6 hábitos</div><p>1) <b>Preacondiciona enchufado</b> · 2) <b>Ventila el asiento</b> antes que forzar el AC · 3) Modo <b>Atenuado</b> y ritmo constante · 4) Aprovecha la <b>regeneración</b> · 5) Llantas a presión correcta · 6) No exceso de velocidad. <span class="tag t-ex">🟦 + 🟩</span></p></div>
+        <div class="rec">✔ Con estos 6, la diferencia real es enorme: puedes ganar decenas de kilómetros por carga. ★★★★★</div>
+        <div class="impact">
+          <div class="im"><div class="il">Autonomía</div><div class="iv pos">▲▲ Sube</div></div>
+          <div class="im"><div class="il">Confort</div><div class="iv pos">▲ Igual</div></div>
+          <div class="im"><div class="il">Costo</div><div class="iv pos">▲ Ahorra</div></div>
+        </div>
+      </div>
+    </details>
+    <div class="note">🟧 Los ~300–360 km son una <b>estimación</b> para uso mixto en Colombia. Tu cifra real dependerá de tu ruta y estilo; la pantalla te muestra el consumo (kWh/100 km) para calcularlo.</div>
+  </section>
+
+  <!-- CAPÍTULO 20 · OTA -->
+  <section>
+    <div class="stitle"><span class="n">20</span><h2>OTA (actualizaciones)</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Tu carro <b>mejora solo</b> con el tiempo: nuevas funciones y arreglos que llegan por internet, gratis. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🔄</div>
+        <div class="h"><div class="t">Cómo actualizar</div><div class="r">Ajustes ▸ Versión del software · o App</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Cómo</div><p>La <b>App ZEEKR</b> te avisa cuando hay versión nueva. Actualizas desde la App o en el carro: <b>Ajustes del vehículo ▸ Versión del software</b>. Puedes ver el <b>Registro de actualización</b> (qué trae). <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Ruta</div><span class="route">Ajustes del vehículo ▸ Versión del software del vehículo ▸ Actualizar</span> <span class="tag t-of">🟩</span></div>
+        <div class="rec">✔ Actualiza de noche, enchufado y estacionado. Deja que baje la mejora mientras duermes. ★★★★★</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">⚠️</div>
+        <div class="h"><div class="t">Antes y durante</div><div class="r">Reglas del manual</div></div>
+        <span class="lvl g">🟢 IMPRESC.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Antes</div><p>Cierra puertas y ventanas, sal del carro, sin personas ni mascotas adentro. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Durante</div><p><b>No se puede usar el carro ni cancelar</b> mientras actualiza; puede tardar. No lo interrumpas. Sigue el progreso en la pantalla. <span class="tag t-of">🟩</span></p></div>
+        <div class="callouts">
+          <div class="co err"><div class="cl">Si falla</div>Revisa que el carro cumpla las condiciones (estacionado, carga suficiente) y reintenta. Si sigue fallando, Centro de Servicio ZEEKR. <span class="tag t-of">🟩</span></div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CAPÍTULO 21 · FUNCIONES OCULTAS -->
+  <section>
+    <div class="stitle"><span class="n">21</span><h2>Funciones ocultas</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Joyas que casi nadie usa y que tu ZEEKR ya trae. <span class="tag t-of">🟩</span></p>
+
+    <details class="screen" open>
+      <summary>
+        <div class="ico">🛡️</div>
+        <div class="h"><div class="t">Modo Centinela</div><div class="r">Vigilancia con cámaras al parquear</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>Con el carro estacionado, las <b>4 cámaras</b> vigilan alrededor y el sistema <b>graba</b> (DVR) si alguien se acerca o toca el carro. <span class="tag t-of">🟩 ficha (Modo Centinela)</span></p></div>
+        <div class="rec">✔ Ideal en la calle o parqueaderos públicos de Medellín. Un rayón o golpe queda grabado. ★★★★★</div>
+        <div class="callouts">
+          <div class="co pro"><div class="cl">Consejo PRO</div>Consume algo de batería estando parado; para ausencias muy largas, valóralo. Para el día a día, tranquilo. <span class="tag t-ex">🟦</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">🎥</div>
+        <div class="h"><div class="t">DVR con la tecla del volante</div><div class="r">Foto y video de lo que pasa al frente</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué hace</div><p>El carro graba la vía (cámara/DVR). Con la tecla asignada del volante: pulsación <b>corta = foto</b>, <b>larga = video</b>. Útil para dejar evidencia de un incidente. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ Si alguien te choca o hay un mal adelantamiento, graba la evidencia con un toque. ★★★★☆</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">📍</div>
+        <div class="h"><div class="t">Localizar el carro y asistente de voz</div><div class="r">App ZEEKR · comandos de voz</div></div>
+        <span class="lvl b">🔵 RECOM.</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Localizador</div><p>Desde la App puedes hacer que el carro <b>toque el claxon y encienda luces</b> para encontrarlo en un parqueadero lleno. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Asistente de voz (IA)</div><p>Di el comando o usa el botón del volante para clima, mapa, llamadas, sin soltar el volante. <span class="tag t-of">🟩</span></p></div>
+        <div class="rec">✔ “Perdí el carro en el centro comercial” → App, localizar, sigue el claxon. ★★★★☆</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary>
+        <div class="ico">✨</div>
+        <div class="h"><div class="t">Más gemas</div><div class="r">Gestos · Face ID · show de luces</div></div>
+        <span class="lvl y">🟡 OPCIONAL</span><span class="chev">▶</span>
+      </summary>
+      <div class="body">
+        <div class="field"><div class="fl">Reconocimiento facial (Face ID)</div><p>El carro te reconoce y carga tu perfil al sentarte. <span class="tag t-of">🟩 · </span><span class="tag t-pc">🟧 confirmar en tu unidad</span></p></div>
+        <div class="field"><div class="fl">Reconocimiento de gestos</div><p>Controlar ciertas funciones con gestos frente a la cámara interior. <span class="tag t-of">🟩 · </span><span class="tag t-pc">🟧 confirmar</span></p></div>
+        <div class="field"><div class="fl">Show de luces y sonidos</div><p>El carro hace una coreografía de luces y sonidos exteriores (para lucirse). <span class="tag t-of">🟩 ficha</span></p></div>
+        <div class="rec">✔ Explóralas un domingo sin afán. Son el “extra premium” de tu ZEEKR. ★★★☆☆</div>
+      </div>
+    </details>
+    <div class="note">🟩 Funciones de la ficha y el manual oficial. 🟧 Algunas (Face ID, gestos) pueden variar según la versión de software de tu unidad — confírmalas en tu carro.</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="vlog">
+      <b>Registro de versiones</b><br>
+      <span style="color:var(--dim)">v1.0</span> — Portada · Cómo usar · Ficha técnica · Configuración Sergio · Índice · Cap. 1.<br>
+      <span style="color:var(--dim)">v1.1</span> — Cap. 2 Perfiles + Cap. 3 Llaves + Sección Colombia.<br>
+      <span style="color:var(--dim)">v1.2</span> — Cap. 4 Acceso + Cap. 5 Bloqueo + Cap. 6 Iluminación.<br>
+      <span style="color:var(--dim)">v1.3</span> — Cap. 7 Pantallas + Cap. 8 Aire + Cap. 9 Asientos.<br>
+      <span style="color:var(--dim)">v1.4</span> — Cap. 10 Espejos + Cap. 11 Volante + Cap. 12 Modos (terminología oficial).<br>
+      <span style="color:var(--dim)">v1.5</span> — Cap. 13 Regeneración + Cap. 14 ADAS + Cap. 15 Parqueo.<br>
+      <span style="color:var(--dim)">v1.6</span> — Cap. 16 Carga AC + Cap. 17 Carga DC + Cap. 18 Batería.<br>
+      <span style="color:var(--accent)">v1.7</span> — <b>Cap. 19 Autonomía</b> + <b>Cap. 20 OTA</b> + <b>Cap. 21 Funciones ocultas</b>. Guía instalable a pantalla completa (PWA) y publicada en línea.<br>
+      <span style="color:var(--dim)">Próxima v1.8</span> — Cap. 22 Trucos + Cap. 23 Errores comunes + Cap. 24 Mitos y verdades.
+    </div>
+    <div class="note">
+      <b>Fuentes:</b> 🟩 Ficha técnica oficial ZEEKR X MY2026 (Colombia) · Manual de usuario ZEEKR X · Ficha Wallbox ZEEKR. 🟦 Experiencia práctica en vehículos eléctricos. 🟧 Pendiente de confirmar contra tu unidad / OTA.<br><br>
+      Las rutas de menú siguen ZEEKR OS y pueden variar con actualizaciones de software. Este documento es una guía de apoyo y <b>no reemplaza el manual oficial</b> para temas de seguridad y garantía.<br><br>
+      ZEEKR X · Guía PRO · Edición Sergio Cardona · v1.7 · Julio 2026
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
