@@ -166,13 +166,41 @@
     border:1px solid var(--line2);background:rgba(20,22,29,.92);backdrop-filter:blur(8px);color:var(--accent);
     font-size:18px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.45)}
   .secret .ico{background:linear-gradient(180deg,rgba(217,185,121,.18),rgba(217,185,121,.05));border-color:rgba(217,185,121,.3)}
+  .tbtn{width:32px;height:32px;border-radius:50%;border:1px solid var(--line2);background:var(--card2);
+    color:var(--muted);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+  .vchk{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:12.8px}
+  .vchk:last-of-type{border-bottom:0}
+  .vchk .lbl{flex:1}
+  .vchk .lbl small{display:block;color:var(--muted);font-size:10.5px;margin-top:2px}
+  .vchk .btns{display:flex;gap:6px;flex:0 0 auto}
+  .vchk button{font-size:11px;font-weight:600;padding:6px 10px;border-radius:8px;border:1px solid var(--line2);background:var(--card2);color:var(--muted);cursor:pointer}
+  .vchk button.on-si{background:rgba(52,199,89,.18);color:#7ee7a0;border-color:rgba(52,199,89,.45)}
+  .vchk button.on-no{background:rgba(255,90,90,.14);color:#ff9a9a;border-color:rgba(255,90,90,.45)}
+  .share{text-align:center}
+  .share img{width:172px;height:172px;border-radius:12px;background:#fff;padding:8px;border:1px solid var(--line)}
+  .share .btns{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+  .share .btns button{font-size:13px;font-weight:600;padding:11px 18px;border-radius:12px;border:1px solid var(--line2);background:var(--card2);color:var(--txt);cursor:pointer}
+  .share .btns button.primary{background:var(--accent);color:#06110f;border-color:var(--accent)}
+  #copyMsg{font-size:12px;color:var(--accent);margin-top:8px;min-height:16px}
+  html[data-theme="light"]{--bg:#eef1f5;--bg2:#e6e9ef;--card:#ffffff;--card2:#f4f6f9;
+    --line:rgba(0,0,0,.10);--line2:rgba(0,0,0,.15);--txt:#161a20;--muted:#57616f;--dim:#8b93a0;
+    --accent:#0e9384;--accent2:#1f6fd0;--gold:#8a6a1f}
+  html[data-theme="light"] body{background:radial-gradient(1200px 600px at 50% -10%, #dde6ee 0%, var(--bg) 55%) fixed, var(--bg)}
+  html[data-theme="light"] .appbar{background:rgba(238,241,245,.85)}
+  html[data-theme="light"] .searchbar{background:rgba(238,241,245,.92)}
+  html[data-theme="light"] #topBtn{background:rgba(255,255,255,.95)}
+  html[data-theme="light"] .vchip{color:#fff}
+  html[data-theme="light"] .scroll th:first-child,html[data-theme="light"] .scroll td:first-child{background:var(--card)}
 </style>
 </head>
 <body>
 
 <div class="appbar"><div class="wrap">
   <div class="brand"><b>ZEEKR&nbsp;X</b><span>Guía PRO · Edición Sergio Cardona</span></div>
-  <div class="vchip">v2.2</div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <button id="themeBtn" class="tbtn" aria-label="Cambiar tema">🌙</button>
+    <div class="vchip">v2.3</div>
+  </div>
 </div></div>
 
 <div class="searchbar"><div class="wrap"><div class="box">
@@ -1901,7 +1929,21 @@
 
     <details class="screen secret" open>
       <summary><div class="ico">🔋</div><div class="h"><div class="t">Secreto 1 · Tu batería no es como las demás</div><div class="r">Es NMC → Cap. 18</div></div><span class="chev">▶</span></summary>
-      <div class="body"><div class="field"><p>Tu AWD tiene batería <b>NMC</b> (la versión Sport es LFP). Por eso <b>a diario cárgala 20–80%</b> y al <b>100% solo el día antes de un viaje</b>. Es el hábito que más alarga la vida de la batería… y nadie te lo dice al entregarte el carro. <span class="tag t-of">🟩</span> <span class="tag t-ex">🟦</span></p></div></div>
+      <div class="body"><div class="field"><p>Tu AWD tiene batería <b>NMC</b> (la versión Sport es LFP). Por eso <b>a diario cárgala 20–80%</b> y al <b>100% solo el día antes de un viaje</b>. Es el hábito que más alarga la vida de la batería… y nadie te lo dice al entregarte el carro. <span class="tag t-of">🟩</span> <span class="tag t-ex">🟦</span></p>
+        <svg viewBox="0 0 320 80" style="width:100%;max-width:320px;margin:12px auto 0;display:block" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zona diaria 20 a 80 por ciento">
+          <rect x="8" y="16" width="284" height="34" rx="8" fill="none" stroke="var(--line2)"/>
+          <rect x="292" y="26" width="7" height="14" rx="2" fill="var(--line2)"/>
+          <rect x="65" y="18" width="170" height="30" rx="5" fill="var(--accent)" opacity="0.9"/>
+          <line x1="65" y1="12" x2="65" y2="55" stroke="var(--accent)" stroke-width="1.5"/>
+          <line x1="235" y1="12" x2="235" y2="55" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="150" y="38" fill="#06110f" font-size="12" font-weight="700" text-anchor="middle" font-family="sans-serif">ZONA DIARIA</text>
+          <text x="65" y="68" fill="var(--muted)" font-size="10" text-anchor="middle" font-family="sans-serif">20%</text>
+          <text x="235" y="68" fill="var(--muted)" font-size="10" text-anchor="middle" font-family="sans-serif">80%</text>
+          <text x="12" y="68" fill="var(--dim)" font-size="9" text-anchor="middle" font-family="sans-serif">0</text>
+          <text x="286" y="68" fill="var(--dim)" font-size="9" text-anchor="middle" font-family="sans-serif">100</text>
+        </svg>
+        <div class="note" style="text-align:center">Ilustración · el 100% resérvalo para viajes. <span class="tag t-ex">🟦</span></div>
+      </div></div>
     </details>
 
     <details class="screen secret">
@@ -2346,6 +2388,31 @@
     </div>
   </section>
 
+  <!-- VERIFICAR EN TU UNIDAD -->
+  <section id="verifica">
+    <div class="stitle"><span class="n">✅</span><h2>Verifica en tu unidad</h2><span class="line"></span></div>
+    <div class="card">
+      <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Estas funciones (🟧) pueden variar según el software de tu carro. Márcalas cuando las pruebes: se <b>guardan en tu celular</b>. <span class="tag t-pc">🟧</span></p>
+      <div class="vchk" data-k="aprox"><div class="lbl">Desbloqueo por aproximación<small>El carro se abre al acercarte con la llave · Cap. 4</small></div><div class="btns"><button data-v="si">✓ Sí</button><button data-v="no">✕ No</button></div></div>
+      <div class="vchk" data-k="dospasos"><div class="lbl">Desbloqueo en 2 pasos<small>1er toque abre tu puerta; 2º todas · Cap. 4</small></div><div class="btns"><button data-v="si">✓ Sí</button><button data-v="no">✕ No</button></div></div>
+      <div class="vchk" data-k="faceid"><div class="lbl">Reconocimiento facial (Face ID)<small>Te reconoce y carga tu perfil · Cap. 21</small></div><div class="btns"><button data-v="si">✓ Sí</button><button data-v="no">✕ No</button></div></div>
+      <div class="vchk" data-k="gestos"><div class="lbl">Reconocimiento de gestos<small>Controlar con gestos ante la cámara · Cap. 21</small></div><div class="btns"><button data-v="si">✓ Sí</button><button data-v="no">✕ No</button></div></div>
+      <div class="note" style="margin-top:12px">Cuando confirmes cuáles tiene tu carro, dímelo y actualizo la guía para quitar esos 🟧.</div>
+    </div>
+  </section>
+
+  <!-- COMPARTIR -->
+  <section id="compartir">
+    <div class="stitle"><span class="n">📤</span><h2>Compartir esta guía</h2><span class="line"></span></div>
+    <div class="card share">
+      <img src="qr.png" alt="Código QR de la guía ZEEKR X">
+      <p style="font-size:12.5px;color:var(--muted);margin:12px 0 0">Escanea el QR o comparte el enlace con tu familia.</p>
+      <div class="btns"><button id="shareBtn" class="primary">Compartir</button><button id="copyBtn">Copiar link</button></div>
+      <div id="copyMsg"></div>
+      <div class="note" style="margin-top:12px">¿Quieres <b>fotos reales</b> de las pantallas de tu ZEEKR en cada ruta? Tómalas y pásamelas: las inserto en su capítulo. <span class="tag t-ex">🟦</span></div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="vlog">
@@ -2362,12 +2429,13 @@
       <span style="color:var(--dim)">v1.9</span> — Cap. 22 Trucos + Cap. 23 Errores comunes + Cap. 24 Mitos y verdades.<br>
       <span style="color:var(--dim)">v2.0</span> — Cap. 25 Solución de problemas + Cap. 26 Mantenimiento + Cap. 27 Lavado.<br>
       <span style="color:var(--dim)">v2.1</span> — Cap. 28–30 · ¡30/30 capítulos completos!<br>
-      <span style="color:var(--accent)">v2.2</span> — Sección <b>“Lo que el concesionario nunca te explicó”</b> (7 secretos) + <b>índice navegable</b> (toca un capítulo y salta) + botón <b>↑ arriba</b>.
+      <span style="color:var(--dim)">v2.2</span> — “Lo que el concesionario nunca te explicó” + índice navegable + botón ↑.<br>
+      <span style="color:var(--accent)">v2.3</span> — <b>Verifica en tu unidad</b> (checklist 🟧 que se guarda) + <b>Compartir con QR</b> + <b>modo claro/oscuro</b> + ilustración de batería.
     </div>
     <div class="note">
       <b>Fuentes:</b> 🟩 Ficha técnica oficial ZEEKR X MY2026 (Colombia) · Manual de usuario ZEEKR X · Ficha Wallbox ZEEKR. 🟦 Experiencia práctica en vehículos eléctricos. 🟧 Pendiente de confirmar contra tu unidad / OTA.<br><br>
       Las rutas de menú siguen ZEEKR OS y pueden variar con actualizaciones de software. Este documento es una guía de apoyo y <b>no reemplaza el manual oficial</b> para temas de seguridad y garantía.<br><br>
-      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.2 · Julio 2026
+      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.3 · Julio 2026
     </div>
   </footer>
 
@@ -2395,6 +2463,28 @@
   // --- Botón volver arriba ---
   var topBtn=document.getElementById('topBtn');
   if(topBtn){window.addEventListener('scroll',function(){topBtn.style.display=(window.scrollY>600)?'flex':'none';},{passive:true});topBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+
+  // --- Tema claro / oscuro ---
+  var themeBtn=document.getElementById('themeBtn');
+  function applyTheme(t){document.documentElement.setAttribute('data-theme',t);if(themeBtn)themeBtn.textContent=(t==='light')?'☀️':'🌙';}
+  var savedT='dark';try{savedT=localStorage.getItem('zx_theme')||'dark';}catch(e){}
+  applyTheme(savedT);
+  if(themeBtn){themeBtn.addEventListener('click',function(){var cur=(document.documentElement.getAttribute('data-theme')==='light')?'dark':'light';applyTheme(cur);try{localStorage.setItem('zx_theme',cur);}catch(e){}});}
+
+  // --- Compartir / copiar link ---
+  var URL_GUIA='https://comercial1992.github.io/zeekr-guia-3e0d5a/';
+  var shareBtn=document.getElementById('shareBtn'),copyBtn=document.getElementById('copyBtn'),copyMsg=document.getElementById('copyMsg');
+  function copyLink(){var done=function(){if(copyMsg){copyMsg.textContent='¡Link copiado!';setTimeout(function(){copyMsg.textContent='';},2500);}};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(URL_GUIA).then(done,done);}else{done();}}
+  if(shareBtn){shareBtn.addEventListener('click',function(){if(navigator.share){navigator.share({title:'ZEEKR X · Guía PRO',text:'Guía experta del ZEEKR X 2026 AWD',url:URL_GUIA}).catch(function(){});}else{copyLink();}});}
+  if(copyBtn){copyBtn.addEventListener('click',copyLink);}
+
+  // --- Verificación 🟧 (se guarda en el celular) ---
+  var vstate={};try{vstate=JSON.parse(localStorage.getItem('zx_verify')||'{}');}catch(e){vstate={};}
+  [].slice.call(document.querySelectorAll('.vchk')).forEach(function(row){var k=row.getAttribute('data-k');var btns=[].slice.call(row.querySelectorAll('button'));
+    function paint(){btns.forEach(function(b){var v=b.getAttribute('data-v');b.classList.remove('on-si','on-no');if(vstate[k]===v){b.classList.add(v==='si'?'on-si':'on-no');}});}
+    btns.forEach(function(b){b.addEventListener('click',function(){var v=b.getAttribute('data-v');vstate[k]=(vstate[k]===v)?null:v;try{localStorage.setItem('zx_verify',JSON.stringify(vstate));}catch(e){}paint();});});
+    paint();});
 })();
 </script>
 </body>
