@@ -160,13 +160,19 @@
   .searchbar input::placeholder{color:var(--dim)}
   #noRes{display:none;text-align:center;color:var(--muted);font-size:13px;padding:30px 10px}
   .faq .ico{background:rgba(90,208,196,.10)}
+  .ch{cursor:pointer;transition:transform .08s,border-color .15s}
+  .ch:active{transform:scale(.97)}
+  #topBtn{position:fixed;right:16px;bottom:18px;z-index:60;display:none;width:44px;height:44px;border-radius:50%;
+    border:1px solid var(--line2);background:rgba(20,22,29,.92);backdrop-filter:blur(8px);color:var(--accent);
+    font-size:18px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.45)}
+  .secret .ico{background:linear-gradient(180deg,rgba(217,185,121,.18),rgba(217,185,121,.05));border-color:rgba(217,185,121,.3)}
 </style>
 </head>
 <body>
 
 <div class="appbar"><div class="wrap">
   <div class="brand"><b>ZEEKR&nbsp;X</b><span>Guía PRO · Edición Sergio Cardona</span></div>
-  <div class="vchip">v2.1</div>
+  <div class="vchip">v2.2</div>
 </div></div>
 
 <div class="searchbar"><div class="wrap"><div class="box">
@@ -1886,6 +1892,50 @@
     <div class="note">🟩 Funciones de la ficha y el manual oficial. 🟧 Algunas (Face ID, gestos) pueden variar según la versión de software de tu unidad — confírmalas en tu carro.</div>
   </section>
 
+  <!-- LO QUE EL CONCESIONARIO NUNCA TE EXPLICÓ -->
+  <section class="secret">
+    <div class="stitle"><span class="n">🔒</span><h2>Lo que el concesionario nunca te explicó</h2><span class="line"></span></div>
+    <div class="card sergio">
+      <p style="font-size:12.5px;color:#dfe2e8;margin:0">Los 7 secretos que separan a un dueño novato de uno experto. Cada uno tiene su capítulo completo; aquí está lo esencial. <span class="tag t-of">🟩</span> <span class="tag t-ex">🟦</span></p>
+    </div>
+
+    <details class="screen secret" open>
+      <summary><div class="ico">🔋</div><div class="h"><div class="t">Secreto 1 · Tu batería no es como las demás</div><div class="r">Es NMC → Cap. 18</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Tu AWD tiene batería <b>NMC</b> (la versión Sport es LFP). Por eso <b>a diario cárgala 20–80%</b> y al <b>100% solo el día antes de un viaje</b>. Es el hábito que más alarga la vida de la batería… y nadie te lo dice al entregarte el carro. <span class="tag t-of">🟩</span> <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+
+    <details class="screen secret">
+      <summary><div class="ico">⚡</div><div class="h"><div class="t">Secreto 2 · Carga lento a diario, rápido solo en viaje</div><div class="r">Cap. 16–17</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>La carga <b>AC en casa</b> (más lenta) es más suave y sana para la batería. La <b>rápida DC</b> guárdala para viajes. Programa la carga de noche (luz barata) y la <b>salida programada</b> para amanecer con todo listo. <span class="tag t-of">🟩</span></p></div></div>
+    </details>
+
+    <details class="screen secret">
+      <summary><div class="ico">🎚️</div><div class="h"><div class="t">Secreto 3 · No existe un botón mágico "Sport/Eco"</div><div class="r">Cap. 12</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Son <b>4 ajustes por separado</b>: aceleración (Atenuado/Estándar/Deporte), dirección (Confort/Normal/Deporte), regeneración (Normal/Deporte) y al soltar (Arrastrar/Mantener). <b>ECO</b> real = Atenuado. <b>Sport</b> = Deporte. Lo que gasta es el pie, no el nombre. <span class="tag t-of">🟩</span></p></div></div>
+    </details>
+
+    <details class="screen secret">
+      <summary><div class="ico">🔁</div><div class="h"><div class="t">Secreto 4 · Bajar recarga la batería (pero no al 100%)</div><div class="r">Cap. 13</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Bajando Las Palmas con regen <b>Deporte + Mantener</b>, el motor frena y <b>devuelve energía</b>. Pero si sales al 100%, la batería está llena y <b>no puede recibir</b> → salir con ~80–90% para bajadas largas. Además cuidas los frenos. <span class="tag t-of">🟩</span> <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+
+    <details class="screen secret">
+      <summary><div class="ico">🌡️</div><div class="h"><div class="t">Secreto 5 · Enfría/calienta con el enchufe, no con la batería</div><div class="r">Cap. 8 · 9 · 19</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p><b>Preacondiciona enchufado</b>: el carro usa la corriente del enchufe para dejar la cabina lista, sin tocar tu autonomía. Y contra el calor, <b>ventila el asiento</b> antes de forzar el AC. Ganas kilómetros y confort. <span class="tag t-of">🟩</span> <span class="tag t-ex">🟦</span></p></div></div>
+    </details>
+
+    <details class="screen secret">
+      <summary><div class="ico">🛡️</div><div class="h"><div class="t">Secreto 6 · Si lo remolcan mal, dañan los motores</div><div class="r">Cap. 25</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p><b>Solo grúa de plataforma plana.</b> Nunca con gancho ni ruedas rodando: en un eléctrico eso puede dañar los motores. Guárdalo en la cabeza como una regla de oro. <span class="tag t-of">🟩</span></p></div></div>
+    </details>
+
+    <details class="screen secret">
+      <summary><div class="ico">🚗</div><div class="h"><div class="t">Secreto 7 · El AWD no gasta el doble</div><div class="r">Cap. 12 · 24</div></div><span class="chev">▶</span></summary>
+      <div class="body"><div class="field"><p>Aunque es 4×4, en ciudad rueda como <b>tracción trasera</b> (más eficiente) y solo activa las 4 ruedas cuando exiges potencia o hay poco agarre. Tienes el desempeño del AWD sin pagarlo en gasto diario. <span class="tag t-of">🟩</span></p></div></div>
+    </details>
+    <div class="note">🟩 Todo con respaldo de ficha/manual. 🟦 Buenas prácticas de uso real. Cada secreto se amplía en su capítulo (usa el buscador).</div>
+  </section>
+
   <!-- PREGUNTAS QUE TODOS HACEN -->
   <section class="faq">
     <div class="stitle"><span class="n">❓</span><h2>Preguntas que todos hacen</h2><span class="line"></span></div>
@@ -2311,17 +2361,18 @@
       <span style="color:var(--dim)">v1.8</span> — Buscador inteligente + Preguntas que todos hacen.<br>
       <span style="color:var(--dim)">v1.9</span> — Cap. 22 Trucos + Cap. 23 Errores comunes + Cap. 24 Mitos y verdades.<br>
       <span style="color:var(--dim)">v2.0</span> — Cap. 25 Solución de problemas + Cap. 26 Mantenimiento + Cap. 27 Lavado.<br>
-      <span style="color:var(--accent)">v2.1</span> — <b>Cap. 28 Antes de viajar</b> + <b>Cap. 29 Después de viajar</b> + <b>Cap. 30 Qué hacer si…</b> · <b>¡30/30 capítulos completos!</b><br>
-      <span style="color:var(--dim)">Próxima v2.2</span> — Sección especial “Lo que el concesionario nunca te explicó”.
+      <span style="color:var(--dim)">v2.1</span> — Cap. 28–30 · ¡30/30 capítulos completos!<br>
+      <span style="color:var(--accent)">v2.2</span> — Sección <b>“Lo que el concesionario nunca te explicó”</b> (7 secretos) + <b>índice navegable</b> (toca un capítulo y salta) + botón <b>↑ arriba</b>.
     </div>
     <div class="note">
       <b>Fuentes:</b> 🟩 Ficha técnica oficial ZEEKR X MY2026 (Colombia) · Manual de usuario ZEEKR X · Ficha Wallbox ZEEKR. 🟦 Experiencia práctica en vehículos eléctricos. 🟧 Pendiente de confirmar contra tu unidad / OTA.<br><br>
       Las rutas de menú siguen ZEEKR OS y pueden variar con actualizaciones de software. Este documento es una guía de apoyo y <b>no reemplaza el manual oficial</b> para temas de seguridad y garantía.<br><br>
-      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.1 · Julio 2026
+      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.2 · Julio 2026
     </div>
   </footer>
 
 </div>
+<button id="topBtn" aria-label="Volver arriba" title="Arriba">↑</button>
 <script>
 (function(){
   function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ñ/g,'n').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();}
@@ -2336,6 +2387,14 @@
   function reset(){screens.forEach(function(s){s.style.display='';s.open=s.__open0;});sections.forEach(function(se){se.style.display='';});if(hero)hero.style.display='';if(noRes)noRes.style.display='none';}
   function run(v){var nv=norm(v);var qs=nv.split(' ').filter(Boolean);if(qs.length===0||nv.length<2){reset();return;}if(hero)hero.style.display='none';var total=0;screens.forEach(function(s){var m=qs.every(function(q){return wmatch(q,s.__words,s.__joined);});s.style.display=m?'':'none';s.open=m;if(m)total++;});sections.forEach(function(se){var scr=se.querySelectorAll('details.screen');if(scr.length===0){se.style.display='none';return;}var vis=[].slice.call(scr).some(function(x){return x.style.display!=='none';});se.style.display=vis?'':'none';});if(noRes)noRes.style.display=total?'none':'block';}
   if(input){input.addEventListener('input',function(e){run(e.target.value);});}
+
+  // --- Navegación: anclas por capítulo + índice clickable ---
+  sections.forEach(function(se){var n=se.querySelector('.stitle .n');if(!n)return;var m=(n.textContent||'').match(/\b(\d{1,2})\b/);if(m){var num=parseInt(m[1],10);if(num>=1&&num<=30&&!se.id)se.id='cap-'+num;}});
+  [].slice.call(document.querySelectorAll('.ch')).forEach(function(ch){var cn=ch.querySelector('.cn');if(!cn)return;var m=(cn.textContent||'').match(/(\d{1,2})/);if(!m)return;var id='cap-'+parseInt(m[1],10);ch.addEventListener('click',function(){if(input&&input.value){input.value='';run('');}var el=document.getElementById(id);if(el){var d=el.querySelector('details.screen');if(d)d.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}});});
+
+  // --- Botón volver arriba ---
+  var topBtn=document.getElementById('topBtn');
+  if(topBtn){window.addEventListener('scroll',function(){topBtn.style.display=(window.scrollY>600)?'flex':'none';},{passive:true});topBtn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
 })();
 </script>
 </body>
