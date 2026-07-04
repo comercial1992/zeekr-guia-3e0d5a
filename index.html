@@ -23,20 +23,23 @@
     --r:18px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   html,body{margin:0;padding:0}
+  img{max-width:100%;height:auto}
   body{
     background:radial-gradient(1200px 600px at 50% -10%, #16202b 0%, var(--bg) 55%) fixed, var(--bg);
     color:var(--txt);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.5; letter-spacing:.1px; -webkit-font-smoothing:antialiased;
-    padding-bottom:60px;
+    line-height:1.55; letter-spacing:.1px; -webkit-font-smoothing:antialiased;
+    padding-bottom:calc(60px + env(safe-area-inset-bottom));
+    overflow-x:hidden;
   }
-  .wrap{max-width:560px;margin:0 auto;padding:0 16px}
+  .wrap{max-width:560px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left))}
 
   /* App bar */
   .appbar{position:sticky;top:0;z-index:50;background:rgba(10,11,13,.82);
     backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line)}
-  .appbar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+  .appbar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:calc(12px + env(safe-area-inset-top));padding-bottom:12px}
   .brand{display:flex;flex-direction:column;line-height:1.15}
   .brand b{font-weight:700;letter-spacing:3px;font-size:16px}
   .brand span{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
@@ -56,7 +59,7 @@
   .stat span{display:block;font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:3px}
 
   /* Sections */
-  section{margin-top:30px}
+  section{margin-top:30px;scroll-margin-top:calc(env(safe-area-inset-top) + 108px)}
   .stitle{display:flex;align-items:center;gap:9px;margin:0 0 12px;padding:0 2px}
   .stitle .n{font-size:11px;color:var(--dim);font-weight:700;letter-spacing:1px}
   .stitle h2{font-size:15px;font-weight:600;margin:0;letter-spacing:.5px}
@@ -150,19 +153,19 @@
   .vlog b{color:var(--txt)}
   .note{font-size:11px;color:var(--dim);margin-top:14px;line-height:1.6}
   a{color:var(--accent)}
-  .searchbar{position:sticky;top:56px;z-index:49;background:rgba(10,11,13,.92);
+  .searchbar{position:sticky;top:calc(56px + env(safe-area-inset-top));z-index:49;background:rgba(10,11,13,.92);
     backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);padding:10px 0}
   .searchbar .box{position:relative}
   .searchbar .mag{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:15px;pointer-events:none}
   .searchbar input{width:100%;box-sizing:border-box;background:var(--card2);border:1px solid var(--line2);
-    border-radius:12px;color:var(--txt);font-size:14px;padding:11px 14px 11px 36px;outline:none;-webkit-appearance:none}
+    border-radius:12px;color:var(--txt);font-size:16px;padding:12px 14px 12px 38px;outline:none;-webkit-appearance:none}
   .searchbar input:focus{border-color:var(--accent)}
   .searchbar input::placeholder{color:var(--dim)}
   #noRes{display:none;text-align:center;color:var(--muted);font-size:13px;padding:30px 10px}
   .faq .ico{background:rgba(90,208,196,.10)}
   .ch{cursor:pointer;transition:transform .08s,border-color .15s}
   .ch:active{transform:scale(.97)}
-  #topBtn{position:fixed;right:16px;bottom:18px;z-index:60;display:none;width:44px;height:44px;border-radius:50%;
+  #topBtn{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:60;display:none;width:46px;height:46px;border-radius:50%;
     border:1px solid var(--line2);background:rgba(20,22,29,.92);backdrop-filter:blur(8px);color:var(--accent);
     font-size:18px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.45)}
   .secret .ico{background:linear-gradient(180deg,rgba(217,185,121,.18),rgba(217,185,121,.05));border-color:rgba(217,185,121,.3)}
@@ -173,7 +176,7 @@
   .vchk .lbl{flex:1}
   .vchk .lbl small{display:block;color:var(--muted);font-size:10.5px;margin-top:2px}
   .vchk .btns{display:flex;gap:6px;flex:0 0 auto}
-  .vchk button{font-size:11px;font-weight:600;padding:6px 10px;border-radius:8px;border:1px solid var(--line2);background:var(--card2);color:var(--muted);cursor:pointer}
+  .vchk button{font-size:12px;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--line2);background:var(--card2);color:var(--muted);cursor:pointer}
   .vchk button.on-si{background:rgba(52,199,89,.18);color:#7ee7a0;border-color:rgba(52,199,89,.45)}
   .vchk button.on-no{background:rgba(255,90,90,.14);color:#ff9a9a;border-color:rgba(255,90,90,.45)}
   .share{text-align:center}
@@ -182,6 +185,10 @@
   .share .btns button{font-size:13px;font-weight:600;padding:11px 18px;border-radius:12px;border:1px solid var(--line2);background:var(--card2);color:var(--txt);cursor:pointer}
   .share .btns button.primary{background:var(--accent);color:#06110f;border-color:var(--accent)}
   #copyMsg{font-size:12px;color:var(--accent);margin-top:8px;min-height:16px}
+  #installTip{display:none;align-items:center;gap:10px;justify-content:space-between;
+    background:linear-gradient(180deg,rgba(90,208,196,.13),var(--card));border:1px solid rgba(90,208,196,.32);
+    border-radius:12px;padding:11px 12px;margin:14px 0 0;font-size:12.3px;color:var(--txt)}
+  #installTip .x{flex:0 0 auto;background:transparent;border:0;color:var(--muted);font-size:17px;cursor:pointer;padding:2px 6px;line-height:1}
   html[data-theme="light"]{--bg:#eef1f5;--bg2:#e6e9ef;--card:#ffffff;--card2:#f4f6f9;
     --line:rgba(0,0,0,.10);--line2:rgba(0,0,0,.15);--txt:#161a20;--muted:#57616f;--dim:#8b93a0;
     --accent:#0e9384;--accent2:#1f6fd0;--gold:#8a6a1f}
@@ -199,7 +206,7 @@
   <div class="brand"><b>ZEEKR&nbsp;X</b><span>Guía PRO · Edición Sergio Cardona</span></div>
   <div style="display:flex;align-items:center;gap:8px">
     <button id="themeBtn" class="tbtn" aria-label="Cambiar tema">🌙</button>
-    <div class="vchip">v2.3</div>
+    <div class="vchip">v2.4</div>
   </div>
 </div></div>
 
@@ -210,6 +217,10 @@
 
 <div class="wrap">
   <div id="noRes">Sin resultados. Prueba con otra palabra (ej. “batería”, “carga”, “regen”).</div>
+  <div id="installTip">
+    <span>📲 Para verla a <b>pantalla completa</b>: <b id="installHow"></b>.</span>
+    <button class="x" id="installClose" aria-label="Cerrar">✕</button>
+  </div>
 
   <!-- HERO -->
   <div class="hero">
@@ -2415,27 +2426,10 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="vlog">
-      <b>Registro de versiones</b><br>
-      <span style="color:var(--dim)">v1.0</span> — Portada · Cómo usar · Ficha técnica · Configuración Sergio · Índice · Cap. 1.<br>
-      <span style="color:var(--dim)">v1.1</span> — Cap. 2 Perfiles + Cap. 3 Llaves + Sección Colombia.<br>
-      <span style="color:var(--dim)">v1.2</span> — Cap. 4 Acceso + Cap. 5 Bloqueo + Cap. 6 Iluminación.<br>
-      <span style="color:var(--dim)">v1.3</span> — Cap. 7 Pantallas + Cap. 8 Aire + Cap. 9 Asientos.<br>
-      <span style="color:var(--dim)">v1.4</span> — Cap. 10 Espejos + Cap. 11 Volante + Cap. 12 Modos (terminología oficial).<br>
-      <span style="color:var(--dim)">v1.5</span> — Cap. 13 Regeneración + Cap. 14 ADAS + Cap. 15 Parqueo.<br>
-      <span style="color:var(--dim)">v1.6</span> — Cap. 16 Carga AC + Cap. 17 Carga DC + Cap. 18 Batería.<br>
-      <span style="color:var(--dim)">v1.7</span> — Cap. 19 Autonomía + Cap. 20 OTA + Cap. 21 Funciones ocultas · PWA + publicación en línea.<br>
-      <span style="color:var(--dim)">v1.8</span> — Buscador inteligente + Preguntas que todos hacen.<br>
-      <span style="color:var(--dim)">v1.9</span> — Cap. 22 Trucos + Cap. 23 Errores comunes + Cap. 24 Mitos y verdades.<br>
-      <span style="color:var(--dim)">v2.0</span> — Cap. 25 Solución de problemas + Cap. 26 Mantenimiento + Cap. 27 Lavado.<br>
-      <span style="color:var(--dim)">v2.1</span> — Cap. 28–30 · ¡30/30 capítulos completos!<br>
-      <span style="color:var(--dim)">v2.2</span> — “Lo que el concesionario nunca te explicó” + índice navegable + botón ↑.<br>
-      <span style="color:var(--accent)">v2.3</span> — <b>Verifica en tu unidad</b> (checklist 🟧 que se guarda) + <b>Compartir con QR</b> + <b>modo claro/oscuro</b> + ilustración de batería.
-    </div>
     <div class="note">
       <b>Fuentes:</b> 🟩 Ficha técnica oficial ZEEKR X MY2026 (Colombia) · Manual de usuario ZEEKR X · Ficha Wallbox ZEEKR. 🟦 Experiencia práctica en vehículos eléctricos. 🟧 Pendiente de confirmar contra tu unidad / OTA.<br><br>
       Las rutas de menú siguen ZEEKR OS y pueden variar con actualizaciones de software. Este documento es una guía de apoyo y <b>no reemplaza el manual oficial</b> para temas de seguridad y garantía.<br><br>
-      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.3 · Julio 2026
+      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.4 · Julio 2026
     </div>
   </footer>
 
@@ -2485,6 +2479,14 @@
     function paint(){btns.forEach(function(b){var v=b.getAttribute('data-v');b.classList.remove('on-si','on-no');if(vstate[k]===v){b.classList.add(v==='si'?'on-si':'on-no');}});}
     btns.forEach(function(b){b.addEventListener('click',function(){var v=b.getAttribute('data-v');vstate[k]=(vstate[k]===v)?null:v;try{localStorage.setItem('zx_verify',JSON.stringify(vstate));}catch(e){}paint();});});
     paint();});
+
+  // --- Sugerencia de instalación a pantalla completa (solo en navegador) ---
+  var tip=document.getElementById('installTip');
+  var standalone=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true;
+  var tipDismissed=false;try{tipDismissed=localStorage.getItem('zx_installtip')==='1';}catch(e){}
+  if(tip&&!standalone&&!tipDismissed){var ua=navigator.userAgent||'';var how=document.getElementById('installHow');var isiOS=/iPhone|iPad|iPod/i.test(ua)||(/Macintosh/.test(ua)&&'ontouchend' in document);if(how)how.textContent=isiOS?'toca Compartir ⬆ y “Agregar a inicio”':'abre el menú ⋮ y “Instalar app”';tip.style.display='flex';}
+  var ix=document.getElementById('installClose');
+  if(ix){ix.addEventListener('click',function(){if(tip)tip.style.display='none';try{localStorage.setItem('zx_installtip','1');}catch(e){}});}
 })();
 </script>
 </body>
