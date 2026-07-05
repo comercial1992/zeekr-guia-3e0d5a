@@ -197,6 +197,13 @@
   .led .d{width:13px;height:13px;border-radius:50%;flex:0 0 auto;box-shadow:0 0 7px currentColor}
   .vidbtn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:12.8px;font-weight:600;
     padding:11px 16px;border-radius:12px;border:1px solid rgba(255,90,90,.35);background:rgba(255,90,90,.10);color:#ff9a9a;text-decoration:none}
+  /* Secciones desplegables */
+  .sec-head{cursor:pointer;-webkit-user-select:none;user-select:none}
+  .sec-head .caret{margin-left:6px;color:var(--dim);font-size:13px;transition:transform .2s;flex:0 0 auto}
+  section:not(.collapsed) > .sec-head .caret{transform:rotate(90deg)}
+  section.collapsed > *:not(.sec-head){display:none}
+  section.collapsed{margin-top:11px}
+  .sec-head:active{opacity:.65}
   html[data-theme="light"]{--bg:#eef1f5;--bg2:#e6e9ef;--card:#ffffff;--card2:#f4f6f9;
     --line:rgba(0,0,0,.10);--line2:rgba(0,0,0,.15);--txt:#161a20;--muted:#57616f;--dim:#8b93a0;
     --accent:#0e9384;--accent2:#1f6fd0;--gold:#8a6a1f}
@@ -214,7 +221,7 @@
   <div class="brand"><b>ZEEKR&nbsp;X</b><span>Guía PRO · Edición Sergio Cardona</span></div>
   <div style="display:flex;align-items:center;gap:8px">
     <button id="themeBtn" class="tbtn" aria-label="Cambiar tema">🌙</button>
-    <div class="vchip">v2.6</div>
+    <div class="vchip">v2.7</div>
   </div>
 </div></div>
 
@@ -2627,7 +2634,7 @@
     <div class="note">
       <b>Fuentes:</b> 🟩 Ficha técnica oficial ZEEKR X MY2026 (Colombia) · Manual de usuario ZEEKR X · Ficha Wallbox ZEEKR. 🟦 Experiencia práctica en vehículos eléctricos. 🟧 Pendiente de confirmar contra tu unidad / OTA.<br><br>
       Las rutas de menú siguen ZEEKR OS y pueden variar con actualizaciones de software. Este documento es una guía de apoyo y <b>no reemplaza el manual oficial</b> para temas de seguridad y garantía.<br><br>
-      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.6 · Julio 2026
+      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.7 · Julio 2026
     </div>
   </footer>
 
@@ -2644,13 +2651,53 @@
   var hero=document.querySelector('.hero');
   var noRes=document.getElementById('noRes');
   var input=document.getElementById('q');
-  function reset(){screens.forEach(function(s){s.style.display='';s.open=s.__open0;});sections.forEach(function(se){se.style.display='';});if(hero)hero.style.display='';if(noRes)noRes.style.display='none';}
-  function run(v){var nv=norm(v);var qs=nv.split(' ').filter(Boolean);if(qs.length===0||nv.length<2){reset();return;}if(hero)hero.style.display='none';var total=0;screens.forEach(function(s){var m=qs.every(function(q){return wmatch(q,s.__words,s.__joined);});s.style.display=m?'':'none';s.open=m;if(m)total++;});sections.forEach(function(se){var scr=se.querySelectorAll('details.screen');if(scr.length===0){se.style.display='none';return;}var vis=[].slice.call(scr).some(function(x){return x.style.display!=='none';});se.style.display=vis?'':'none';});if(noRes)noRes.style.display=total?'none':'block';}
+  // --- Anclas por capítulo ---
+  sections.forEach(function(se){var n=se.querySelector('.stitle .n');if(!n)return;var m=(n.textContent||'').match(/\b(\d{1,2})\b/);if(m){var num=parseInt(m[1],10);if(num>=1&&num<=30&&!se.id)se.id='cap-'+num;}});
+
+  // --- Secciones desplegables (colapsadas por defecto; el índice queda abierto) ---
+  sections.forEach(function(se){
+    var head=se.querySelector('.stitle'); if(!head) return;
+    head.classList.add('sec-head');
+    if(!head.querySelector('.caret')){var c=document.createElement('span');c.className='caret';c.textContent='▸';head.appendChild(c);}
+    se.__collapseDefault = !se.querySelector('.chgrid');
+    if(se.__collapseDefault) se.classList.add('collapsed');
+    head.addEventListener('click',function(ev){ if(ev.target.closest('a'))return; se.classList.toggle('collapsed'); });
+  });
+
+  // --- Buscador: muestra SOLO las tarjetas que coinciden ---
+  function reset(){
+    if(hero)hero.style.display='';
+    sections.forEach(function(se){ se.style.display='';
+      [].slice.call(se.children).forEach(function(ch){ch.style.display='';});
+      if(se.__collapseDefault) se.classList.add('collapsed'); else se.classList.remove('collapsed');
+    });
+    screens.forEach(function(s){s.style.display='';s.open=s.__open0;});
+    if(noRes)noRes.style.display='none';
+  }
+  function run(v){
+    var nv=norm(v);var qs=nv.split(' ').filter(Boolean);
+    if(qs.length===0||nv.length<2){reset();return;}
+    if(hero)hero.style.display='none';
+    var total=0;
+    sections.forEach(function(se){
+      var head=se.querySelector('.sec-head');
+      if(se.querySelectorAll('details.screen').length===0){se.style.display='none';return;}
+      var any=false;
+      [].slice.call(se.children).forEach(function(ch){
+        if(ch===head){ch.style.display='';return;}
+        if(ch.classList&&ch.classList.contains('screen')){
+          var m=qs.every(function(q){return wmatch(q,ch.__words,ch.__joined);});
+          if(m){ch.style.display='';ch.open=true;any=true;total++;}else{ch.style.display='none';}
+        }else{ch.style.display='none';}
+      });
+      if(any){se.style.display='';se.classList.remove('collapsed');}else{se.style.display='none';}
+    });
+    if(noRes)noRes.style.display=total?'none':'block';
+  }
   if(input){input.addEventListener('input',function(e){run(e.target.value);});}
 
-  // --- Navegación: anclas por capítulo + índice clickable ---
-  sections.forEach(function(se){var n=se.querySelector('.stitle .n');if(!n)return;var m=(n.textContent||'').match(/\b(\d{1,2})\b/);if(m){var num=parseInt(m[1],10);if(num>=1&&num<=30&&!se.id)se.id='cap-'+num;}});
-  [].slice.call(document.querySelectorAll('.ch')).forEach(function(ch){var cn=ch.querySelector('.cn');if(!cn)return;var m=(cn.textContent||'').match(/(\d{1,2})/);if(!m)return;var id='cap-'+parseInt(m[1],10);ch.addEventListener('click',function(){if(input&&input.value){input.value='';run('');}var el=document.getElementById(id);if(el){var d=el.querySelector('details.screen');if(d)d.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}});});
+  // --- Índice: al tocar un capítulo, lo abre y baja a él ---
+  [].slice.call(document.querySelectorAll('.ch')).forEach(function(ch){var cn=ch.querySelector('.cn');if(!cn)return;var m=(cn.textContent||'').match(/(\d{1,2})/);if(!m)return;var id='cap-'+parseInt(m[1],10);ch.addEventListener('click',function(){if(input&&input.value){input.value='';run('');}var el=document.getElementById(id);if(el){el.classList.remove('collapsed');var d=el.querySelector('details.screen');if(d)d.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}});});
 
   // --- Botón volver arriba ---
   var topBtn=document.getElementById('topBtn');
