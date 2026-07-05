@@ -189,6 +189,14 @@
     background:linear-gradient(180deg,rgba(90,208,196,.13),var(--card));border:1px solid rgba(90,208,196,.32);
     border-radius:12px;padding:11px 12px;margin:14px 0 0;font-size:12.3px;color:var(--txt)}
   #installTip .x{flex:0 0 auto;background:transparent;border:0;color:var(--muted);font-size:17px;cursor:pointer;padding:2px 6px;line-height:1}
+  .diagram{width:100%;height:auto;margin:10px 0 4px;display:block;border:1px solid var(--line);border-radius:14px;background:var(--bg2)}
+  .steps{display:grid;gap:9px;margin:8px 0 2px}
+  .steps .st{display:flex;gap:10px;align-items:flex-start;font-size:12.9px;color:#dfe2e8}
+  .steps .st .num{flex:0 0 auto;width:23px;height:23px;border-radius:50%;background:var(--accent);color:#06110f;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .led{display:flex;align-items:center;gap:9px;font-size:12.5px;padding:5px 0}
+  .led .d{width:13px;height:13px;border-radius:50%;flex:0 0 auto;box-shadow:0 0 7px currentColor}
+  .vidbtn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:12.8px;font-weight:600;
+    padding:11px 16px;border-radius:12px;border:1px solid rgba(255,90,90,.35);background:rgba(255,90,90,.10);color:#ff9a9a;text-decoration:none}
   html[data-theme="light"]{--bg:#eef1f5;--bg2:#e6e9ef;--card:#ffffff;--card2:#f4f6f9;
     --line:rgba(0,0,0,.10);--line2:rgba(0,0,0,.15);--txt:#161a20;--muted:#57616f;--dim:#8b93a0;
     --accent:#0e9384;--accent2:#1f6fd0;--gold:#8a6a1f}
@@ -206,7 +214,7 @@
   <div class="brand"><b>ZEEKR&nbsp;X</b><span>Guía PRO · Edición Sergio Cardona</span></div>
   <div style="display:flex;align-items:center;gap:8px">
     <button id="themeBtn" class="tbtn" aria-label="Cambiar tema">🌙</button>
-    <div class="vchip">v2.5</div>
+    <div class="vchip">v2.6</div>
   </div>
 </div></div>
 
@@ -1931,6 +1939,175 @@
     <div class="note">🟩 Funciones de la ficha y el manual oficial. 🟧 Algunas (Face ID, gestos) pueden variar según la versión de software de tu unidad — confírmalas en tu carro.</div>
   </section>
 
+  <!-- LA PANTALLA PASO A PASO -->
+  <section>
+    <div class="stitle"><span class="n">🗺️</span><h2>La pantalla paso a paso</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Cómo moverte en la pantalla de 14.6" (ZEEKR OS) sin perderte. <span class="tag t-of">🟩 manual</span></p>
+
+    <details class="screen" open>
+      <summary><div class="ico">📺</div><div class="h"><div class="t">Mapa de la pantalla</div><div class="r">Qué es cada zona</div></div><span class="chev">▶</span></summary>
+      <div class="body">
+        <svg class="diagram" viewBox="0 0 340 214" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa de la pantalla central">
+          <rect x="6" y="6" width="328" height="202" rx="14" fill="var(--card)" stroke="var(--line2)"/>
+          <rect x="14" y="14" width="312" height="22" rx="6" fill="var(--bg2)"/>
+          <text x="20" y="29" font-size="10" fill="var(--muted)" font-family="sans-serif">👤 Cuenta</text>
+          <text x="322" y="29" text-anchor="end" font-size="10" fill="var(--muted)" font-family="sans-serif">📶 🔋 10:30 · Barra de estado</text>
+          <rect x="14" y="44" width="150" height="98" rx="10" fill="var(--bg2)" stroke="var(--line)"/>
+          <text x="24" y="64" font-size="10" fill="var(--accent)" font-family="sans-serif" font-weight="700">Tarjetas de</text>
+          <text x="24" y="78" font-size="10" fill="var(--accent)" font-family="sans-serif" font-weight="700">control rápido</text>
+          <text x="24" y="98" font-size="9" fill="var(--muted)" font-family="sans-serif">mapa · música</text>
+          <text x="24" y="111" font-size="9" fill="var(--muted)" font-family="sans-serif">carro · consumo</text>
+          <rect x="174" y="44" width="152" height="98" rx="10" fill="var(--bg2)" stroke="var(--line)"/>
+          <text x="184" y="64" font-size="10" fill="var(--accent)" font-family="sans-serif" font-weight="700">Acceso rápido</text>
+          <text x="184" y="84" font-size="9" fill="var(--muted)" font-family="sans-serif">fecha · clima</text>
+          <text x="184" y="97" font-size="9" fill="var(--muted)" font-family="sans-serif">🎤 voz</text>
+          <rect x="14" y="150" width="312" height="50" rx="10" fill="var(--bg2)"/>
+          <text x="34" y="180" font-size="15" text-anchor="middle">🔊</text>
+          <text x="76" y="180" font-size="15" text-anchor="middle">▦</text>
+          <text x="118" y="180" font-size="15" text-anchor="middle">🎥</text>
+          <text x="160" y="180" font-size="15" text-anchor="middle">💺</text>
+          <text x="202" y="180" font-size="15" text-anchor="middle">❄️</text>
+          <text x="244" y="180" font-size="15" text-anchor="middle">🌫️</text>
+          <text x="286" y="180" font-size="15" text-anchor="middle">⚙️</text>
+          <text x="316" y="180" font-size="15" text-anchor="middle">🏠</text>
+          <text x="170" y="196" font-size="7.5" text-anchor="middle" fill="var(--dim)" font-family="sans-serif">apps · 360 · asiento · clima · desempañado · ⚙ ajustes · 🏠 inicio</text>
+        </svg>
+        <div class="note">🟩 Estructura del manual ZEEKR X. Los iconos son ilustrativos.</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">👆</div><div class="h"><div class="t">Los 3 gestos que debes saber</div><div class="r">Con esto manejas todo</div></div><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="st"><span class="num">1</span><div><b>Desliza desde arriba</b> → menú desplegable (control rápido): luces, brillo, <b>tema oscuro/claro</b>, controles del carro, modo de cabina y abrir/cerrar baúl. <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">2</span><div>Toca el <b>icono de la barra de estado</b> (arriba) → tu <b>cuenta/perfil</b> (asiento, espejos, HUD). <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">3</span><div>Toca <b>🏠 inicio</b> (abajo) para volver, o <b>▦ apps</b> para “Mi coche” y demás. <span class="tag t-of">🟩</span></div></div>
+        </div>
+        <div class="rec">✔ Con esos 3 gestos ya no te pierdes en ningún menú. ★★★★★</div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🧭</div><div class="h"><div class="t">Rutas más usadas</div><div class="r">Dónde está cada cosa</div></div><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Quiero…</th><th>Ruta</th></tr></thead>
+            <tbody>
+              <tr><td>Luces</td><td>Luces ▸ Exteriores/Interiores</td></tr>
+              <tr><td>Cerraduras / aproximación</td><td>Puertas y Ventanillas ▸ Puertas</td></tr>
+              <tr><td>Modos, regen, dirección</td><td>Conducción</td></tr>
+              <tr><td>Asiento: ventilar/calentar</td><td>Confort del asiento ▸ Climatización</td></tr>
+              <tr><td>Carga (tope, programar)</td><td>Carga y Descarga ▸ Cargando mi coche</td></tr>
+              <tr><td>Asistencias (ACC, etc.)</td><td>ZEEKR AD ▸ Conductor inteligente</td></tr>
+              <tr><td>Brillo / tema pantalla</td><td>Pantalla</td></tr>
+              <tr><td>Ajustes generales</td><td>Ajustes del vehículo</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <a class="vidbtn" href="https://www.youtube.com/results?search_query=ZEEKR+X+pantalla+tutorial+espa%C3%B1ol" target="_blank" rel="noopener">🎥 Ver videos de la pantalla</a>
+      </div>
+    </details>
+  </section>
+
+  <!-- APP ZEEKR -->
+  <section>
+    <div class="stitle"><span class="n">📱</span><h2>App ZEEKR (para qué sirve)</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Tu carro en el bolsillo: verlo y controlarlo a distancia. <span class="tag t-of">🟩 manual</span></p>
+
+    <details class="screen" open>
+      <summary><div class="ico">📲</div><div class="h"><div class="t">Qué puedes hacer</div><div class="r">Control remoto del carro</div></div><span class="chev">▶</span></summary>
+      <div class="body">
+        <svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="App ZEEKR">
+          <rect x="100" y="8" width="100" height="174" rx="16" fill="var(--card)" stroke="var(--line2)"/>
+          <text x="150" y="30" text-anchor="middle" font-size="10" fill="var(--muted)" font-family="sans-serif">ZEEKR · X Flagship</text>
+          <text x="150" y="74" text-anchor="middle" font-size="34">🚗</text>
+          <rect x="116" y="88" width="68" height="20" rx="10" fill="var(--bg2)"/>
+          <text x="150" y="102" text-anchor="middle" font-size="10" fill="var(--accent)" font-family="sans-serif" font-weight="700">🔋 80% · 336 km</text>
+          <text x="122" y="132" font-size="16">🔒</text><text x="146" y="132" font-size="16">❄️</text>
+          <text x="170" y="132" font-size="16">🔦</text>
+          <rect x="116" y="146" width="68" height="14" rx="4" fill="var(--bg2)"/><text x="150" y="156" text-anchor="middle" font-size="8" fill="var(--muted)" font-family="sans-serif">Tarjetas de función</text>
+          <rect x="116" y="164" width="68" height="12" rx="4" fill="var(--bg2)"/>
+          <text x="30" y="60" font-size="9" fill="var(--muted)" font-family="sans-serif">Carga y</text>
+          <text x="30" y="72" font-size="9" fill="var(--muted)" font-family="sans-serif">autonomía →</text>
+          <text x="238" y="118" font-size="9" fill="var(--muted)" font-family="sans-serif">← Controles</text>
+          <text x="238" y="130" font-size="9" fill="var(--muted)" font-family="sans-serif">rápidos</text>
+        </svg>
+        <div class="steps">
+          <div class="st"><span class="num">✓</span><div><b>Ver</b> carga (%), autonomía y estado de puertas/ventanas. <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">✓</span><div><b>Bloquear/abrir</b>, ventanas y <b>portón</b>; <b>localizar</b> el carro (claxon + luces). <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">✓</span><div><b>Preacondicionar</b>: prender el aire, calentar asiento y volante antes de subir. <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">✓</span><div><b>Programar la carga</b>, recibir <b>OTA</b> y <b>compartir</b> el carro con la familia. <span class="tag t-of">🟩</span></div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🚀</div><div class="h"><div class="t">Cómo empezar</div><div class="r">3 pasos</div></div><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="st"><span class="num">1</span><div>Descarga <b>“ZEEKR”</b> (App Store / Google Play). <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">2</span><div>Inicia sesión con tu <b>ZEEKR ID</b> (el mismo del carro). <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">3</span><div>Vincula tu vehículo y activa <b>Bluetooth</b>. Listo: ya lo controlas. <span class="tag t-of">🟩</span></div></div>
+        </div>
+        <div class="rec">✔ Vincula la App el primer día: sin ella no hay preacondicionar ni ver la carga desde el celular. ★★★★★</div>
+        <a class="vidbtn" href="https://www.youtube.com/results?search_query=ZEEKR+app+tutorial+funciones" target="_blank" rel="noopener">🎥 Ver videos de la app ZEEKR</a>
+        <div class="note" style="margin-top:10px">📷 ¿Tienes capturas de tu app? Mándamelas y las pongo aquí en cada función.</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- WALLBOX ZEEKR -->
+  <section>
+    <div class="stitle"><span class="n">🔌</span><h2>Wallbox ZEEKR + su app</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Tu cargador de casa, paso a paso. <span class="tag t-of">🟩 ficha</span> <span class="tag t-ex">🟦</span></p>
+
+    <details class="screen" open>
+      <summary><div class="ico">🏡</div><div class="h"><div class="t">Qué es y su instalación</div><div class="r">7 / 11 / 22 kW · Tipo 2</div></div><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="field"><div class="fl">Qué es</div><p>Cargador de pared ZEEKR, conector <b>Tipo 2</b>, cable <b>5 m</b>, con <b>Wi-Fi, Bluetooth y RFID</b> y control por app. Tu AWD acepta hasta <b>22 kW</b>. <span class="tag t-of">🟩</span></p></div>
+        <div class="field"><div class="fl">Instalación (electricista)</div><p>Monofásico 230 V (hasta 7.4 kW) o trifásico 400 V (hasta 22 kW). Requiere <b>protección diferencial</b> adecuada y buena tierra. IP55 (sirve exterior). <b>No es de bricolaje</b>: instálalo un técnico certificado. <span class="tag t-of">🟩</span></p></div>
+        <div class="callouts"><div class="co err"><div class="cl">Ojo</div>La potencia real (7/11/22 kW) depende de tu instalación eléctrica en casa. <span class="tag t-of">🟩</span></div></div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">⚡</div><div class="h"><div class="t">Cargar paso a paso</div><div class="r">Enchufar → autorizar → listo</div></div><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="st"><span class="num">1</span><div><b>Enchufa</b> la pistola al puerto del carro. <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">2</span><div><b>Autoriza</b> de una de 3 formas: <b>Plug &amp; Charge</b> (automático), <b>tarjeta RFID</b>, o desde la <b>app</b>. <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">3</span><div>El <b>LED</b> te dice el estado (abajo la leyenda). <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">4</span><div>Al terminar, <b>detén</b> desde la app/tarjeta y desconecta. <span class="tag t-ex">🟦</span></div></div>
+        </div>
+        <div class="field" style="margin-top:6px"><div class="fl">Leyenda LED (típica)</div>
+          <div class="led"><span class="d" style="color:#8a929e">●</span> Apagado — sin energía</div>
+          <div class="led"><span class="d" style="color:#3b9dff">●</span> Fijo — listo / conectado</div>
+          <div class="led"><span class="d" style="color:#34c759">●</span> Parpadeo — cargando</div>
+          <div class="led"><span class="d" style="color:#34c759">●</span> Verde fijo — carga completa</div>
+          <div class="led"><span class="d" style="color:#ff5a5a">●</span> Rojo — fallo (revisa)</div>
+          <div class="note"><span class="tag t-pc">🟧</span> Los colores <b>varían según el modelo</b>: confirma en el manual del Wallbox (está dentro de la app).</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">📶</div><div class="h"><div class="t">Vincular y usar la app</div><div class="r">Código + PIN · Bluetooth</div></div><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="steps">
+          <div class="st"><span class="num">1</span><div>En la <b>app ZEEKR</b>, agrega el Wallbox con su <b>código de producto + PIN</b> (vienen en el equipo). <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">2</span><div>Conéctate por <b>Bluetooth</b> al cargador. <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">3</span><div>Ajusta la <b>corriente</b> (6–32 A), <b>inicia/detén</b> y <b>programa</b> la carga a horas de luz barata. <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">4</span><div>Revisa el <b>consumo</b> y la energía cargada; activa/desactiva el RFID. <span class="tag t-of">🟩</span></div></div>
+        </div>
+        <div class="rec">✔ Combínalo con la <b>Salida programada</b> del carro (Cap. 16): carga barata de noche + carro listo a tu hora. ★★★★★</div>
+        <a class="vidbtn" href="https://www.youtube.com/results?search_query=ZEEKR+wallbox+app+instalaci%C3%B3n" target="_blank" rel="noopener">🎥 Ver videos del Wallbox</a>
+        <div class="note" style="margin-top:10px"><span class="tag t-pc">🟧</span> Hay 2 apps: <b>ZEEKR</b> (carro + tu Wallbox en casa) y <b>ZEEKR Charge</b> (cargadores públicos, con cuenta y pago; puede no estar en Colombia). Confírmalo con tu concesionario.</div>
+      </div>
+    </details>
+  </section>
+
   <!-- LO QUE EL CONCESIONARIO NUNCA TE EXPLICÓ -->
   <section class="secret">
     <div class="stitle"><span class="n">🔒</span><h2>Lo que el concesionario nunca te explicó</h2><span class="line"></span></div>
@@ -2450,7 +2627,7 @@
     <div class="note">
       <b>Fuentes:</b> 🟩 Ficha técnica oficial ZEEKR X MY2026 (Colombia) · Manual de usuario ZEEKR X · Ficha Wallbox ZEEKR. 🟦 Experiencia práctica en vehículos eléctricos. 🟧 Pendiente de confirmar contra tu unidad / OTA.<br><br>
       Las rutas de menú siguen ZEEKR OS y pueden variar con actualizaciones de software. Este documento es una guía de apoyo y <b>no reemplaza el manual oficial</b> para temas de seguridad y garantía.<br><br>
-      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.5 · Julio 2026
+      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.6 · Julio 2026
     </div>
   </footer>
 
