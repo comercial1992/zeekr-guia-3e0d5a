@@ -204,6 +204,8 @@
   section.collapsed > *:not(.sec-head){display:none}
   section.collapsed{margin-top:11px}
   .sec-head:active{opacity:.65}
+  .cmds{margin-top:4px}
+  .cmds .cmd{font-size:12.9px;padding:8px 11px;margin:6px 0;border-left:3px solid var(--accent);background:var(--bg2);border-radius:7px;color:#dfe2e8}
   html[data-theme="light"]{--bg:#eef1f5;--bg2:#e6e9ef;--card:#ffffff;--card2:#f4f6f9;
     --line:rgba(0,0,0,.10);--line2:rgba(0,0,0,.15);--txt:#161a20;--muted:#57616f;--dim:#8b93a0;
     --accent:#0e9384;--accent2:#1f6fd0;--gold:#8a6a1f}
@@ -221,7 +223,7 @@
   <div class="brand"><b>ZEEKR&nbsp;X</b><span>Guía PRO · Edición Sergio Cardona</span></div>
   <div style="display:flex;align-items:center;gap:8px">
     <button id="themeBtn" class="tbtn" aria-label="Cambiar tema">🌙</button>
-    <div class="vchip">v2.8</div>
+    <div class="vchip">v2.9</div>
   </div>
 </div></div>
 
@@ -2225,6 +2227,84 @@
     </details>
   </section>
 
+  <!-- COMANDOS DE VOZ -->
+  <section>
+    <div class="stitle"><span class="n">🎙️</span><h2>Comandos de voz “Hi ZEEKR”</h2><span class="line"></span></div>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 2px 14px">Controla ventanas, clima, asientos y más hablando. <span class="tag t-of">🟩 manual</span> <span class="tag t-ex">🟦 ejemplos</span></p>
+
+    <details class="screen" open>
+      <summary><div class="ico">🎤</div><div class="h"><div class="t">Cómo activarlo</div><div class="r">Palabra: “Hi ZEEKR”</div></div><span class="lvl g">🟢</span><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="field"><div class="fl">Paso a paso</div><div class="steps">
+          <div class="st"><span class="num">1</span><div>Di <b>“Hi ZEEKR”</b> y espera el pitido. <span class="tag t-of">🟩</span></div></div>
+          <div class="st"><span class="num">2</span><div>O pulsa la <b>tecla del asistente</b> (panel <b>izquierdo</b> del volante).</div></div>
+          <div class="st"><span class="num">3</span><div>O toca la <b>imagen del asistente</b> en la pantalla.</div></div>
+          <div class="st"><span class="num">4</span><div>Da tu comando hablando normal y claro. Para cancelar: tecla del panel <b>derecho</b>.</div></div>
+        </div></div>
+        <div class="field"><div class="fl">Cambiar la palabra</div><p>Puedes revisarla o cambiarla en <b>Ajustes de voz</b> en la pantalla. <span class="tag t-of">🟩</span></p></div>
+        <div class="callouts"><div class="co err"><div class="cl">Para que funcione bien</div>Habla claro (sin jerga), con el carro en silencio y <b>buena señal</b>. Ventana abierta = el viento estorba. <span class="tag t-of">🟩</span></div></div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🪟</div><div class="h"><div class="t">Ventanas y clima</div><div class="r">Ejemplos</div></div><span class="lvl b">🔵</span><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="cmds">
+          <div class="cmd">“Baja las ventanas” / “Sube las ventanas”</div>
+          <div class="cmd">“Baja la ventana del conductor”</div>
+          <div class="cmd">“Sube la temperatura” / “Baja la temperatura”</div>
+          <div class="cmd">“Pon 22 grados”</div>
+          <div class="cmd">“Enciende el aire” / “Apaga el aire”</div>
+          <div class="cmd">“Sube el ventilador” / “Baja el ventilador”</div>
+          <div class="cmd">“Enciende el desempañador”</div>
+          <div class="cmd">“Dirige el aire a la cara / a los pies”</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">💺</div><div class="h"><div class="t">Asientos y confort</div><div class="r">Ejemplos</div></div><span class="lvl b">🔵</span><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="cmds">
+          <div class="cmd">“Ventila mi asiento” / “Apaga la ventilación”</div>
+          <div class="cmd">“Calienta mi asiento” / “Nivel 2”</div>
+          <div class="cmd">“Calienta el volante”</div>
+          <div class="cmd">“Masaje en el asiento”</div>
+          <div class="cmd">“Pon la luz ambiental azul”</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">🗺️</div><div class="h"><div class="t">Navegación, música y llamadas</div><div class="r">Ejemplos</div></div><span class="lvl b">🔵</span><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="cmds">
+          <div class="cmd">“Llévame a casa” / “Navega a [lugar]”</div>
+          <div class="cmd">“Busca un cargador cerca”</div>
+          <div class="cmd">“Pon música” / “Siguiente canción” / “Pausa”</div>
+          <div class="cmd">“Sube el volumen” / “Baja el volumen”</div>
+          <div class="cmd">“Llama a [nombre]” / “Contesta” / “Cuelga”</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="screen">
+      <summary><div class="ico">ℹ️</div><div class="h"><div class="t">Info del carro y extras</div><div class="r">Ejemplos</div></div><span class="lvl b">🔵</span><span class="chev">▶</span></summary>
+      <div class="body">
+        <div class="cmds">
+          <div class="cmd">“¿Cuánta batería tengo?” / “¿Cuánta autonomía?”</div>
+          <div class="cmd">“¿Qué presión tienen las llantas?”</div>
+          <div class="cmd">“Abre el baúl” / “Cierra el portón”</div>
+          <div class="cmd">“Abre la cámara 360”</div>
+          <div class="cmd">“Toma una foto” (DVR)</div>
+          <div class="cmd">“Activa el modo mascota”</div>
+        </div>
+        <div class="rec">✔ Truco: puedes <b>encadenar</b> → “Hi ZEEKR, baja las ventanas y pon música”. ★★★★★</div>
+        <div class="note" style="margin-top:10px">🟩 El asistente controla ventanas, clima y asientos (manual). 🟦 Los comandos son <b>ejemplos</b>: entiende lenguaje natural, así que puedes decirlo con tus palabras. <span class="tag t-pc">🟧</span> El fraseo exacto y qué funciones responden pueden variar por software/OTA. Ojo: el <b>techo es fijo</b>, no se abre.</div>
+      </div>
+    </details>
+  </section>
+
   <!-- LO QUE EL CONCESIONARIO NUNCA TE EXPLICÓ -->
   <section class="secret">
     <div class="stitle"><span class="n">🔒</span><h2>Lo que el concesionario nunca te explicó</h2><span class="line"></span></div>
@@ -2744,7 +2824,7 @@
     <div class="note">
       <b>Fuentes:</b> 🟩 Ficha técnica oficial ZEEKR X MY2026 (Colombia) · Manual de usuario ZEEKR X · Ficha Wallbox ZEEKR. 🟦 Experiencia práctica en vehículos eléctricos. 🟧 Pendiente de confirmar contra tu unidad / OTA.<br><br>
       Las rutas de menú siguen ZEEKR OS y pueden variar con actualizaciones de software. Este documento es una guía de apoyo y <b>no reemplaza el manual oficial</b> para temas de seguridad y garantía.<br><br>
-      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.8 · Julio 2026
+      ZEEKR X · Guía PRO · Edición Sergio Cardona · v2.9 · Julio 2026
     </div>
   </footer>
 
